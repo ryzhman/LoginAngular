@@ -4,10 +4,10 @@
 
 'use strict';
 
-import HeaderController from '../../common/controller/HeaderController';
+import HeaderController from "../../common/controller/HeaderController";
 import usersListController from "./controller/usersListController";
 
-export default ($stateProvider)=>{
+export default ($stateProvider) => {
 
     let header = {
         templateUrl: '/app/views/common/header.html',
@@ -19,17 +19,17 @@ export default ($stateProvider)=>{
         .state('admin', {
             abstract: true,
             url: '/admin',
-            views:{
+            views: {
                 'header': header,
                 '': {
                     templateUrl: '/app/views/admin/admin.html',
                 }
             },
             resolve: {
-                users: (userService)=>{
+                users: (userService) => {
                     return userService.getUsers();
                 },
-                loggedInUser: (userService)=>{
+                loggedInUser: (userService) => {
                     return userService.getLoggedInUser();
                 }
             }

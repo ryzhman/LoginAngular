@@ -18,6 +18,14 @@ export default class UserService {
         }
     }
 
+    isAdmin(user){
+        return user.group === 'admins';
+    }
+
+    isLoggedInUserAdmin(){
+        return this.loggedInUser.group === 'admins';
+    }
+
     setLastLoginDate(user){
         user.lastLogin = this.$filter('date')(new Date(), 'medium');
         this.addUser(user);

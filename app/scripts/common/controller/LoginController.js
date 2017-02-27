@@ -9,27 +9,20 @@ export default class LoginController{
     };
 
     userLogin(){
-        let name = this.login;
-        let pswd = this.pass;
-
+        let user = this.userService.userLogin(this.login, this.pass);
         this.login = '';
         this.pass = '';
 
-        let user = this.userService.userLogin(name, pswd);
-
         if(!user){
             alert("Error during logging in");
+            this.$state.go('login');
         }
 
-        if(this._isAdmin(user)) {
+        if(this.userService.isAdmin(user)) {
             this.$state.go('admin.allUsers');
         } else {
             this.$state.go('about');
         }
 
-    }
-
-    _isAdmin(user){
-        return user.group === 'admins';
     }
 }
