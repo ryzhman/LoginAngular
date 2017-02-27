@@ -1,0 +1,30 @@
+<div ><!--class="container-fluid"-->
+	<p> hello rom List of Users</p>
+	<div class="row">
+		<table class="table">
+			<thead>
+				<th>#</th>
+				<th>Name</th>
+				<th>Password</th>
+				<th>Group</th>
+				<th>Last login</th>
+			</thead>
+			<tr ng-repeat="user in ctrl.userList">
+				<td>{{$index}}</td>
+				<td>
+					<a href ui-sref="admin.viewUser({userId: $index})">{{user.name}}</a>
+				</td>
+				<td>{{user.pass}}</td>
+				<td>{{user.group}}</td>
+				<td>{{user.lastLogin}}</td>
+			</tr>
+		</table>
+	</div>
+
+	<div class="row">
+		<div class="col-xs-12">
+			<a href class="btn btn-success" ui-sref="admin.createUser">Add user</a>
+		</div>
+	</div>
+
+</div>
