@@ -26,6 +26,9 @@ export default ($stateProvider) => {
                 }
             },
             resolve: {
+                isAdmin: (userService)=>{
+                    return userService.isLoggedInUserAdmin();
+                },
                 users: (userService) => {
                     return userService.getUsers();
                 },

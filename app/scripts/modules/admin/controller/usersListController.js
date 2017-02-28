@@ -4,8 +4,16 @@
 'use strict';
 
 export default class UsersListController{
-    constructor(/*$state,*/ $state, users){
+    constructor($state, users, isAdmin){
         this.userList = users;
-        // this.$state = $state;
-    }
+        this.$state = $state;
+        this._doesUserHaveRights(isAdmin);
+   }
+
+    _doesUserHaveRights(isAdmin){
+			if(!isAdmin){
+			    this.$state.go('home');
+        	}
+        }
+    
 }

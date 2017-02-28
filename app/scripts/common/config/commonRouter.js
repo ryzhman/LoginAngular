@@ -5,6 +5,7 @@ import headerController from "../controller/HeaderController";
 import homeController from "../controller/HomeConroller";
 import aboutController from "../controller/AboutController";
 import loginController from "../controller/LoginController";
+import logoutController from "../controller/LogoutController";
 
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
     let header = {
@@ -27,6 +28,19 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
                         controllerAs: 'ctrl'
                     }
                 }
+            }
+        )
+        .state('logout', {
+                 url: '/logout',
+                    title: "Logout",
+                    views: {
+                        'header': header,
+                        '': {
+                            templateUrl: '/app/views/common/logout.html',
+                            controller: logoutController,
+                            controllerAs: 'ctrl'
+                        }
+                    }
             }
         )
        .state("home", {
