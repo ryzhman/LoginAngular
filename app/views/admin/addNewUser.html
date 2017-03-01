@@ -1,0 +1,21 @@
+<div class="container-fluid">
+    <h1>To create a new user add appropriate info here</h1>
+    <form submit="ctrl.addNewUser()" class="navbar-form navbar-left">
+        <ul>
+            <li>
+                <input type="text" ng-model='ctrl.name' placeholder="Enter username" class="form-control">
+            </li>
+            <li>
+                <input type="text" ng-model='ctrl.pass' placeholder="Enter password" class="form-control">
+            </li>
+            <li>
+                <select name="group">
+                    <option value='admins'>Admins</option>
+                    <option value='users' selected>Users</option>
+                </select>
+            </li>
+        </ul>
+        <!-- <input type="" ng-model='ctrl.group' placeholder="Enter user group"> -->
+        <button class="btn btn-default navbar-btn" type="submit">Create new user</button>
+    </form>
+</div>

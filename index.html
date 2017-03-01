@@ -1,17 +1,21 @@
 <!DOCTYPE html>
 <html lang="en" ng-app="app">
+
 <head>
     <meta charset="UTF-8">
-    <title>Login page</title>
+    <title>Login application</title>
     <base href="/">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
 </head>
+
 <body>
-<ui-view name="header"></ui-view>
-
-<ui-view>
-    Loading . . .
-</ui-view>
-
-<script src="build/bundle.js"></script>
+    <div> <!-- class="jumbotron"> -->
+        <ui-view name="header"></ui-view>
+        <ui-view>
+            Loading . . .
+        </ui-view>
+        <div>
+            <script src="build/bundle.js"></script>
 </body>
+
 </html>

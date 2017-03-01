@@ -6,6 +6,7 @@ import homeController from "../controller/HomeConroller";
 import aboutController from "../controller/AboutController";
 import loginController from "../controller/LoginController";
 import logoutController from "../controller/LogoutController";
+import usersService from "../service/userService";
 
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
     let header = {
@@ -18,58 +19,54 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
 
     $stateProvider
         .state('login', {
-                url: '/login',
-                title: "Login",
-                views: {
-                    'header': header,
-                    '': {
-                        templateUrl: '/app/views/common/login.html',
-                        controller: loginController,
-                        controllerAs: 'ctrl'
-                    }
+            url: '/login',
+            title: "Login",
+            views: {
+                'header': header,
+                '': {
+                    templateUrl: '/app/views/common/login.html',
+                    controller: loginController,
+                    controllerAs: 'ctrl'
                 }
-            }
-        )
+            },
+        })
         .state('logout', {
-                 url: '/logout',
-                    title: "Logout",
-                    views: {
-                        'header': header,
-                        '': {
-                            templateUrl: '/app/views/common/logout.html',
-                            controller: logoutController,
-                            controllerAs: 'ctrl'
-                        }
-                    }
-            }
-        )
-       .state("home", {
-                url: "/home",
-                title: 'Home',
-                views: {
-                    'header': header,
-                    '': {
-                        templateUrl: '/app/views/user/home.html',
-                        controller: homeController,
-                        controllerAs: 'ctrl'
-                    }
+            url: '/logout',
+            title: "Logout",
+            views: {
+                'header': header,
+                '': {
+                    templateUrl: '/app/views/common/logout.html',
+                    controller: logoutController,
+                    controllerAs: 'ctrl'
                 }
+            },
+        })
+        .state("home", {
+            url: "/home",
+            title: 'Home',
+            views: {
+                'header': header,
+                '': {
+                    templateUrl: '/app/views/user/home.html',
+                    controller: homeController,
+                    controllerAs: 'ctrl'
+                }
+            }
 
-            }
-        )
+        })
         .state("about", {
-                url: '/about',
-                title: 'About',
-                views: {
-                    'header': header,
-                    '': {
-                        templateUrl: '/app/views/common/about.html',
-                        controller: aboutController,
-                        controllerAs: 'ctrl'
-                    }
+            url: '/about',
+            title: 'About',
+            views: {
+                'header': header,
+                '': {
+                    templateUrl: '/app/views/common/about.html',
+                    controller: aboutController,
+                    controllerAs: 'ctrl'
                 }
             }
-        );
+        });
 
     $urlRouterProvider.otherwise('/home');
 }

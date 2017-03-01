@@ -11,40 +11,40 @@ export default class UserService {
 
     userLogin(name, pass) {
         let user = this.getUser(name);
-        if(user && user.pass === pass){
+        if (user && user.pass === pass) {
             this.loggedInUser = user;
             this.setLastLoginDate(this.loggedInUser);
             return user;
         }
     }
 
-    isAdmin(user){
+    isAdmin(user) {
         return user.group === 'admins';
     }
 
-    isLoggedInUserAdmin(){
+    isLoggedInUserAdmin() {
         return this.loggedInUser.group === 'admins';
     }
 
-    setLastLoginDate(user){
+    setLastLoginDate(user) {
         user.lastLogin = this.$filter('date')(new Date(), 'medium');
         this.addUser(user);
     }
 
-    getLoggedInUser(){
+    getLoggedInUser() {
         return this.loggedInUser;
     }
 
     getUser(name) {
-        for(let i=0; i<this.userList.length; i++){
-            if(this.userList[i].name === name) {
+        for (let i = 0; i < this.userList.length; i++) {
+            if (this.userList[i].name === name) {
                 return this.userList[i];
             }
         }
     }
 
     //either update or create new
-    addUser(newUser){
+    addUser(newUser) {
         let users = this.getUsers();
         users.push(newUser);
     }
@@ -54,19 +54,16 @@ export default class UserService {
         // localStorage.set(newUser.name, newUser);
     }
 
-    getUsers(){
-        return [
-            {
-                name: "admin",
-                pass: "admin",
-                group: "admins"
-            },
-            {
-                name: "user1",
-                pass: "user1",
-                group: "users"
-            }
-        ];
+    getUsers() {
+        return [{
+            name: "admin",
+            pass: "admin",
+            group: "admins"
+        }, {
+            name: "user1",
+            pass: "user1",
+            group: "users"
+        }];
     }
 
 };

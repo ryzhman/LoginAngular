@@ -3,9 +3,10 @@
  */
 
 export default class HeaderController{
-    constructor($state){
+    constructor($state, userService){
         let states = $state.get(); //just getting states
         this.states = states.filter((state) =>{ //getting their names
+            // if(userService.getLoggedInUser() && state.title)
             return state.title;
         });
     }

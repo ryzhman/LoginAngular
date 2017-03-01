@@ -6,6 +6,7 @@
 
 import HeaderController from "../../common/controller/HeaderController";
 import usersListController from "./controller/usersListController";
+import addNewUserController from "./controller/addNewUserController";
 
 export default ($stateProvider) => {
 
@@ -26,7 +27,7 @@ export default ($stateProvider) => {
                 }
             },
             resolve: {
-                isAdmin: (userService)=>{
+                isAdmin: (userService) => {
                     return userService.isLoggedInUserAdmin();
                 },
                 users: (userService) => {
@@ -43,5 +44,12 @@ export default ($stateProvider) => {
             templateUrl: '/app/views/admin/users.html',
             controller: usersListController,
             controllerAs: 'ctrl'
+        })
+        .state('admin.addUser', {
+            url:'/addNewUser',
+            title: 'Add new user',
+            templateUrl: '/app/views/admin/addNewUser.html',
+            controller: addNewUserController,
+            controllerAs: 'ctrl',
         });
 }
