@@ -14,6 +14,8 @@ export default class UsersListController{
 			if(!isAdmin){
 			    this.$state.go('home');
         	}
-        }
-    
+    }
+    metthod(asdas){
+    	console.log('asdas');
+    }
 }
