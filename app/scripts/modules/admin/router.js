@@ -32,9 +32,6 @@ export default ($stateProvider) => {
                 isAdmin: (userService) => {
                     return userService.isLoggedInUserAdmin();
                 },
-                users: (userService) => {
-                    return userService.getUsers();
-                },
                 loggedInUser: (userService) => {
                     return userService.getLoggedInUser();
                 }
@@ -47,7 +44,12 @@ export default ($stateProvider) => {
             loginRequired: true,
             templateUrl: '/app/views/admin/users.html',
             controller: usersListController,
-            controllerAs: 'ctrl'
+            controllerAs: 'ctrl',
+            resolve:{
+                users: (userService) => {
+                    return userService.getUsers();
+                }
+            }
         })
         .state('admin.addUser', {
             url: '/addNewUser',

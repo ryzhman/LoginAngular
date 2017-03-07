@@ -4,7 +4,15 @@
 
 export default class UserService {
     constructor($filter) {
-        this.userList = this.getUsers();
+        this.userList = this.users = [{
+            name: "admin",
+            pass: "admin",
+            group: "admins"
+        }, {
+            name: "user1",
+            pass: "user1",
+            group: "users"
+        }];;
         this.loggedInUser = null;
         this.$filter = $filter;
     }
@@ -28,7 +36,7 @@ export default class UserService {
 
     setLastLoginDate(user) {
         user.lastLogin = this.$filter('date')(new Date(), 'medium');
-        this.addUser(user);
+        // this.addUser(user);
     }
 
     getLoggedInUser() {
@@ -55,15 +63,7 @@ export default class UserService {
     }
 
     getUsers() {
-        return [{
-            name: "admin",
-            pass: "admin",
-            group: "admins"
-        }, {
-            name: "user1",
-            pass: "user1",
-            group: "users"
-        }];
+        return this.userList;
     }
 
 };

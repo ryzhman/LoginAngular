@@ -15,7 +15,4 @@ export default class UsersListController{
 			    this.$state.go('home');
         	}
     }
-    metthod(asdas){
-    	console.log('asdas');
-    }
 }

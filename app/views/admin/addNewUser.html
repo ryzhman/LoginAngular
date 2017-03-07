@@ -1,36 +1,32 @@
 <div class="container-fluid ">
     <h1>To create a new user add appropriate info here</h1>
-    <form submit="ctrl.addNewUser()" class="form-horizontal" role="form">
+    <form ng-submit="ctrl.addNewUser()" class="form-horizontal" role="form" autocomplete="off">
         <div class="form-group">
             <label for="name" class="col-sm-2 control-label">User name</label>
             <div class="col-sm-4">
                 <input id="name" type="text" ng-model='ctrl.name' placeholder="Enter username" class="form-control" required>
             </div>
-        </div> 
-
+        </div>
         <div class="form-group">
             <label for="pass" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-4">
                 <input id="pass" type="text" ng-model='ctrl.pass1' placeholder="Enter password" class="form-control" required>
             </div>
         </div>
-
         <div class="form-group">
             <label for="pass" class="col-sm-2 control-label">Confirm password</label>
             <div class="col-sm-4">
                 <input id="pass" type="text" ng-model='ctrl.pass2' placeholder="Enter password once again" class="form-control" required>
             </div>
         </div>
-
         <div class="form-group">
-            <label for="pass" class="col-sm-2 control-label">Email</label>
+            <label for="email" class="col-sm-2 control-label">Email</label>
             <div class="col-sm-4">
-                <input id="pass" type="text" ng-model='ctrl.email' placeholder="Enter email" class="form-control" required>
+                <input id="email" type="email" ng-model='ctrl.email' placeholder="Enter email" class="form-control" required>
             </div>
         </div>
-
-        <div class="form-group">
-            <label for="group" class="col-sm-2 control-label">Choose group</label>
+        <div class="form-group" autocomplete="off">
+            <label for="group" class="col-sm-2 control-label" ng-model="ctrl.group">Choose group</label>
             <div class="col-sm-4">
                 <select id="group" name="group" class="form-control">
                     <option value='admins'>Admins</option>
@@ -38,9 +34,6 @@
                 </select>
             </div>
         </div>
-
-        <div class="form-group">
-            <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new user</button>
-        </div>
+        <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new user</button>
     </form>
 </div>
