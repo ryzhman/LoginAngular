@@ -20,6 +20,8 @@ export default ($stateProvider) => {
         .state('admin', {
             abstract: true,
             url: '/admin',
+            adminRoleRequired: true,
+            loginRequired: true,
             views: {
                 'header': header,
                 '': {
@@ -41,13 +43,17 @@ export default ($stateProvider) => {
         .state('admin.allUsers', {
             url: '/users',
             title: 'Users list',
+            adminRoleRequired: true,
+            loginRequired: true,
             templateUrl: '/app/views/admin/users.html',
             controller: usersListController,
             controllerAs: 'ctrl'
         })
         .state('admin.addUser', {
-            url:'/addNewUser',
+            url: '/addNewUser',
             title: 'Add new user',
+            adminRoleRequired: true,
+            loginRequired: true,
             templateUrl: '/app/views/admin/addNewUser.html',
             controller: addNewUserController,
             controllerAs: 'ctrl',

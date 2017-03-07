@@ -1,5 +1,3 @@
-var path = require('path');
-
 module.exports = {
     context: __dirname + "/app",
     entry: "./scripts/app.js",
@@ -8,25 +6,22 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
-	  	loaders: [
-	    	{
-		      	test: /\.js$/,
-		      	exclude: /(node_modules|bower_components)/,
-		      	loader: 'babel-loader',
-		      	query: {
-		        	presets: ['es2015']
-		      	}
-	    	},
-	    	{
-		        test: /\.scss$/,
-		        loaders: ["style-loader", "css-loader", "sass-loader"]
-		    }
-	  	]
-	},
-	resolve: {
-		root: path.join(__dirname, '/app')
-	},
+        loaders: [
+            {
+                test: /\.js$/,
+                exclude: /(node_modules|bower_components)/,
+                loader: 'babel-loader',
+                query: {
+                    presets: ['es2015']
+                }
+            },
+            {
+                test: /\.scss$/,
+                loaders: ["style-loader", "css-loader", "sass-loader"]
+            }
+        ]
+    },
     devServer: {
-        port: 8080
+        port: 8001
     }
-}
+};
