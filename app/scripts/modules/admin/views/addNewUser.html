@@ -26,9 +26,9 @@
             </div>
         </div>
         <div class="form-group" autocomplete="off">
-            <label for="group" class="col-sm-2 control-label" ng-model="ctrl.group">Choose group</label>
+            <label for="group" class="col-sm-2 control-label" >Choose group</label>
             <div class="col-sm-4">
-                <select id="group" name="group" class="form-control">
+                <select id="group" name="group" ng-model="ctrl.group" class="form-control">
                     <option value='admins'>Admins</option>
                     <option value='users' selected>Users</option>
                 </select>

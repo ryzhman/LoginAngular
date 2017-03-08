@@ -6,20 +6,20 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
-        loaders: [
-            {
-                test: /\.js$/,
-                exclude: /(node_modules|bower_components)/,
-                loader: 'babel-loader',
-                query: {
-                    presets: ['es2015']
-                }
-            },
-            {
-                test: /\.scss$/,
-                loaders: ["style-loader", "css-loader", "sass-loader"]
+        loaders: [{
+            test: /\.html$/,
+            loader: "angular-templatecache-loader"
+        }, {
+            test: /\.js$/,
+            exclude: /(node_modules|bower_components)/,
+            loader: 'babel-loader',
+            query: {
+                presets: ['es2015']
             }
-        ]
+        }, {
+            test: /\.scss$/,
+            loaders: ["style-loader", "css-loader", "sass-loader"]
+        }]
     },
     devServer: {
         port: 8001

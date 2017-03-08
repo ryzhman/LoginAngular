@@ -8,9 +8,16 @@ import loginController from "../controller/LoginController";
 import logoutController from "../controller/LogoutController";
 import usersService from "../service/userService";
 
+import headerTmpl from "../../../views/common/header.html";
+import logoutTmpl from '../../../views/common/logout.html';
+import loginTmpl from '../../../views/common/login.html';
+import homeTmpl from '../../../views/user/home.html';
+import aboutTmpl from '../../../views/common/about.html';
+
+
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
     let header = {
-        templateUrl: '/app/views/common/header.html',
+        template: headerTmpl,
         controller: headerController,
         controllerAs: 'ctrl'
     };
@@ -26,7 +33,7 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             views: {
                 'header': header,
                 '': {
-                    templateUrl: '/app/views/common/login.html',
+                    template: loginTmpl,
                     controller: loginController,
                     controllerAs: 'ctrl'
                 }
@@ -40,7 +47,7 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             views: {
                 'header': header,
                 '': {
-                    templateUrl: '/app/views/common/logout.html',
+                    template: logoutTmpl,
                     controller: logoutController,
                     controllerAs: 'ctrl'
                 }
@@ -54,7 +61,7 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             views: {
                 'header': header,
                 '': {
-                    templateUrl: '/app/views/user/home.html',
+                    template: homeTmpl,
                     controller: homeController,
                     controllerAs: 'ctrl'
                 }
@@ -69,7 +76,7 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             views: {
                 'header': header,
                 '': {
-                    templateUrl: '/app/views/common/about.html',
+                    template: aboutTmpl,
                     controller: aboutController,
                     controllerAs: 'ctrl'
                 }

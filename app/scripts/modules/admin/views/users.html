@@ -5,15 +5,17 @@
 				<th>#</th>
 				<th>Name</th>
 				<th>Password</th>
+				<th>Email</th>
 				<th>Group</th>
 				<th>Last login</th>
 			</thead>
 			<tr ng-repeat="user in ctrl.userList track by $index">
-				<td>{{$index}}</td>
+				<td>{{$index+1}}</td>
 				<td>
 					<a href ui-sref="admin.viewUser({userId: $index})">{{user.name}}</a>
 				</td>
 				<td>{{user.pass}}</td>
+				<td>{{user.email}}</td>
 				<td>{{user.group}}</td>
 				<td>{{user.lastLogin}}</td>
 			</tr>

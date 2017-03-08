@@ -7,11 +7,15 @@
 import HeaderController from "../../common/controller/HeaderController";
 import usersListController from "./controller/usersListController";
 import addNewUserController from "./controller/addNewUserController";
+import adminMainTmpl from "./views/admin.html";
+import usersTmpl from "./views/users.html";
+import addNewUserTmpl from "./views/addNewUser.html";
+import headerTmpl from "../../../views/common/header.html";
 
 export default ($stateProvider) => {
 
     let header = {
-        templateUrl: '/app/views/common/header.html',
+        template: headerTmpl,
         controller: HeaderController,
         controllerAs: 'ctrl'
     };
@@ -25,7 +29,8 @@ export default ($stateProvider) => {
             views: {
                 'header': header,
                 '': {
-                    templateUrl: '/app/views/admin/admin.html',
+                    // templateUrl: '/app/views/admin/admin.html',
+                    template: adminMainTmpl,
                 }
             },
             resolve: {
@@ -42,10 +47,11 @@ export default ($stateProvider) => {
             title: 'Users list',
             adminRoleRequired: true,
             loginRequired: true,
-            templateUrl: '/app/views/admin/users.html',
+            // templateUrl: '/app/views/admin/users.html',
+            template: usersTmpl,
             controller: usersListController,
             controllerAs: 'ctrl',
-            resolve:{
+            resolve: {
                 users: (userService) => {
                     return userService.getUsers();
                 }
@@ -56,7 +62,8 @@ export default ($stateProvider) => {
             title: 'Add new user',
             adminRoleRequired: true,
             loginRequired: true,
-            templateUrl: '/app/views/admin/addNewUser.html',
+            // templateUrl: '/app/views/admin/addNewUser.html',
+            template: addNewUserTmpl,
             controller: addNewUserController,
             controllerAs: 'ctrl',
         });
