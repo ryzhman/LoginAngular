@@ -29,7 +29,6 @@ export default ($stateProvider) => {
             views: {
                 'header': header,
                 '': {
-                    // templateUrl: '/app/views/admin/admin.html',
                     template: adminMainTmpl,
                 }
             },
@@ -47,7 +46,6 @@ export default ($stateProvider) => {
             title: 'Users list',
             adminRoleRequired: true,
             loginRequired: true,
-            // templateUrl: '/app/views/admin/users.html',
             template: usersTmpl,
             controller: usersListController,
             controllerAs: 'ctrl',
@@ -62,7 +60,6 @@ export default ($stateProvider) => {
             title: 'Add new user',
             adminRoleRequired: true,
             loginRequired: true,
-            // templateUrl: '/app/views/admin/addNewUser.html',
             template: addNewUserTmpl,
             controller: addNewUserController,
             controllerAs: 'ctrl',

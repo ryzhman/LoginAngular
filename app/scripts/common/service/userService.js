@@ -36,7 +36,6 @@ export default class UserService {
 
     setLastLoginDate(user) {
         user.lastLogin = this.$filter('date')(new Date(), 'medium');
-        // this.addUser(user);
     }
 
     getLoggedInUser() {

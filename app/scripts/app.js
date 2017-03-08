@@ -3,15 +3,20 @@
 import angular from "angular";
 import uiRouter from "angular-ui-router";
 import commonRouter from "./common/config/commonRouter";
-// import localStorage from 'angular-local-storage';
 import userService from "./common/service/userService";
 import adminModule from "./modules/admin/app";
 
 angular.module('app', [
-    uiRouter,
-    adminModule.name])
+        uiRouter,
+        adminModule.name
+    ])
     .config(commonRouter)
     .service('userService', userService)
+    .run(($rootScope)=>{
+        $rootScope.$on('$stateChangeSuccess', function(event, toState) {
+            $rootScope.pageTitle = toState.title;
+        });
+    })
 
 //
 // .run(function($rootScope){
