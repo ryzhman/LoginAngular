@@ -25,6 +25,20 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
     $locationProvider.hashPrefix("!");
 
     $stateProvider
+        .state("home", {
+            url: "/home",
+            title: 'Home',
+            adminRoleRequired: false,
+            loginRequired: false,
+            views: {
+                'header': header,
+                '': {
+                    template: homeTmpl,
+                    controller: homeController,
+                    controllerAs: 'ctrl'
+                }
+            }
+        })
         .state('login', {
             url: '/login',
             title: "Login",
@@ -52,21 +66,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
                     controllerAs: 'ctrl'
                 }
             },
-        })
-        .state("home", {
-            url: "/home",
-            title: 'Home',
-            adminRoleRequired: false,
-            loginRequired: false,
-            views: {
-                'header': header,
-                '': {
-                    template: homeTmpl,
-                    controller: homeController,
-                    controllerAs: 'ctrl'
-                }
-            }
-
         })
         .state("about", {
             url: '/about',

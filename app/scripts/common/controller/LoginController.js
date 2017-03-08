@@ -6,11 +6,6 @@ export default class LoginController {
     constructor(userService, $state) {
         this.userService = userService;
         this.$state = $state;
-        // console.log($rootScope);
-        // $rootScope.$on('$routeChangeSuccess', (event, data) => {
-        //     console.log("Logintrl event as triggered");
-        //     $rootScope.pageTitle = "Login page";
-        // });
     };
 
     userLogin() {
