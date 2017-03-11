@@ -2,8 +2,6 @@
  * Created by Олександр on 26.02.2017.
  */
 
-'use strict';
-
 import HeaderController from "../../common/controller/HeaderController";
 import usersListController from "./controller/usersListController";
 import addNewUserController from "./controller/addNewUserController";
@@ -13,6 +11,8 @@ import addNewUserTmpl from "./views/addNewUser.html";
 import headerTmpl from "../../../views/common/header.html";
 
 export default ($stateProvider) => {
+    "use strict";
+
     "ngInject";
 
     let header = {
@@ -65,4 +65,4 @@ export default ($stateProvider) => {
             controller: addNewUserController,
             controllerAs: 'ctrl',
         });
-}
+};

@@ -1,10 +1,10 @@
 /**
  * Created by Олександр on 26.02.2017.
  */
-'use strict';
 
 export default class UsersListController {
     constructor($state, users, isAdmin) {
+        "use strict";
         "ngInject";
 
         this.userList = users;
@@ -13,6 +13,8 @@ export default class UsersListController {
     }
 
     _doesUserHaveRights(isAdmin) {
+        "use strict";
+
         if (!isAdmin) {
             this.$state.go('home');
         }

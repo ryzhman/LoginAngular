@@ -6,6 +6,11 @@ module.exports = {
         filename: "bundle.js"
     },
     module: {
+        preLoaders: [{
+            test: /\.js$/,
+            exclude: /node_modules/,
+            loader: "jshint-loader"
+        }],
         loaders: [{
             test: /\.html$/,
             loader: "angular-templatecache-loader"

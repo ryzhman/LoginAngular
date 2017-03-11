@@ -1,5 +1,3 @@
-'use strict';
-
 import angular from "angular";
 import uiRouter from "angular-ui-router";
 import commonRouter from "./common/config/commonRouter";
@@ -13,6 +11,7 @@ angular.module('app', [
     .config(commonRouter)
     .service('userService', userService)
     .run(($rootScope) => {
+        'use strict';
         "ngInject";
 
         $rootScope.$on('$stateChangeSuccess', (event, toState) => {

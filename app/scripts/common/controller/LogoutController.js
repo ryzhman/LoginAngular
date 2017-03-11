@@ -1,7 +1,7 @@
-'use strict';
-
 export default class LogoutController {
     constructor($state, userService) {
+        "use strict";
+
         "ngInject";
 
         this.userService = userService;
@@ -9,6 +9,8 @@ export default class LogoutController {
     }
 
     logout() {
+        "use strict";
+
         this.userService.loggedInUser = null;
         this.$state.go('home');
     }

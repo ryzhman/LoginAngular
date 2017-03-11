@@ -6,7 +6,6 @@ import homeController from "../controller/HomeConroller";
 import aboutController from "../controller/AboutController";
 import loginController from "../controller/LoginController";
 import logoutController from "../controller/LogoutController";
-import usersService from "../service/userService";
 
 import headerTmpl from "../../../views/common/header.html";
 import logoutTmpl from '../../../views/common/logout.html';
@@ -16,8 +15,10 @@ import aboutTmpl from '../../../views/common/about.html';
 
 
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
+    "use strict";
+
     "ngInject";
-    
+
     let header = {
         template: headerTmpl,
         controller: headerController,
@@ -85,4 +86,4 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
         });
 
     $urlRouterProvider.otherwise('/home');
-}
+};

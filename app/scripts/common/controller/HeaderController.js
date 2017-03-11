@@ -4,6 +4,8 @@
 
 export default class HeaderController {
     constructor($state, userService) {
+        "use strict";
+
         "ngInject";
 
         let statesList = $state.get(); //just getting states
