@@ -4,8 +4,10 @@
 
 export default class HeaderController {
     constructor($state, userService) {
+        "ngInject";
+
         let statesList = $state.get(); //just getting states
-      
+
         this.states = statesList.filter((state) => {
             if (state.title) {
                 if (userService.getLoggedInUser() === null) {

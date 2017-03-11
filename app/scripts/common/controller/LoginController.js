@@ -4,9 +4,17 @@
 
 export default class LoginController {
     constructor(userService, $state) {
+        "ngInject";
+
         this.userService = userService;
         this.$state = $state;
+        this.passwordsUnequal = true;
     };
+
+    arePasswordsEqual() {
+        this.passwordsUnequal = this.pass1 === this.pass2;
+        return this.passwordsUnequal;
+    }
 
     userLogin() {
         let user = this.userService.userLogin(this.login, this.pass);

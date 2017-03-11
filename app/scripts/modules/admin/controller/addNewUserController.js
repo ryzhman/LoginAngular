@@ -2,6 +2,8 @@
 
 export default class AddNewUserController {
     constructor($state, userService) {
+        "ngInject";
+
         this.$state = $state;
         this.userService = userService;
     };

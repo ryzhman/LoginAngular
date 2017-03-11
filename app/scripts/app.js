@@ -12,11 +12,14 @@ angular.module('app', [
     ])
     .config(commonRouter)
     .service('userService', userService)
-    .run(($rootScope)=>{
-        $rootScope.$on('$stateChangeSuccess', function(event, toState) {
+    .run(($rootScope) => {
+        "ngInject";
+
+        $rootScope.$on('$stateChangeSuccess', (event, toState) => {
             $rootScope.pageTitle = toState.title;
         });
     })
+
 
 //
 // .run(function($rootScope){

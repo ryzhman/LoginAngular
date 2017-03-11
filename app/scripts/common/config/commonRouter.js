@@ -16,6 +16,8 @@ import aboutTmpl from '../../../views/common/about.html';
 
 
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
+    "ngInject";
+    
     let header = {
         template: headerTmpl,
         controller: headerController,

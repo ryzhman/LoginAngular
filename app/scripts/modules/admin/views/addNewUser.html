@@ -1,4 +1,4 @@
-<div class="container-fluid ">
+<div class="container-fluid">
     <h1>To create a new user add appropriate info here</h1>
     <form ng-submit="ctrl.addNewUser()" class="form-horizontal" role="form" autocomplete="off">
         <div class="form-group">
@@ -10,14 +10,17 @@
         <div class="form-group">
             <label for="pass" class="col-sm-2 control-label">Password</label>
             <div class="col-sm-4">
-                <input id="pass" type="text" ng-model='ctrl.pass1' placeholder="Enter password" class="form-control" required>
+                <input id="pass1" type="text" ng-model='ctrl.pass1' placeholder="Enter password" class="form-control" required>
             </div>
         </div>
         <div class="form-group">
             <label for="pass" class="col-sm-2 control-label">Confirm password</label>
             <div class="col-sm-4">
-                <input id="pass" type="text" ng-model='ctrl.pass2' placeholder="Enter password once again" class="form-control" required>
+                <input id="pass2" type="text" ng-model='ctrl.pass2' placeholder="Enter password once again" class="form-control" required ng-change="ctrl.arePasswordsEqual()">
             </div>
+        </div>
+        <div class="form-group" ng-show="ctrl.passwordsUnequal && ctrl.pass2.$dirty">
+            <p class="col-sm-offset-2 col-sm-4">Passwords don't match</p>
         </div>
         <div class="form-group">
             <label for="email" class="col-sm-2 control-label">Email</label>
@@ -26,7 +29,7 @@
             </div>
         </div>
         <div class="form-group" autocomplete="off">
-            <label for="group" class="col-sm-2 control-label" >Choose group</label>
+            <label for="group" class="col-sm-2 control-label">Choose group</label>
             <div class="col-sm-4">
                 <select id="group" name="group" ng-model="ctrl.group" class="form-control">
                     <option value='admins'>Admins</option>

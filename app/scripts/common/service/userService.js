@@ -4,6 +4,8 @@
 
 export default class UserService {
     constructor($filter) {
+        "ngInject";
+
         this.userList = this.users = [{
             name: "admin",
             pass: "admin",

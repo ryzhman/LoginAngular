@@ -13,6 +13,7 @@ import addNewUserTmpl from "./views/addNewUser.html";
 import headerTmpl from "../../../views/common/header.html";
 
 export default ($stateProvider) => {
+    "ngInject";
 
     let header = {
         template: headerTmpl,
