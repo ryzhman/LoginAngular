@@ -6,4 +6,4 @@ tmp
 .idea
 dist/
 build/
-npm-debug-log*
+npm-debug.*
