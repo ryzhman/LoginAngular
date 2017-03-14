@@ -8,9 +8,7 @@ export default class HeaderController {
 
         "ngInject";
 
-        let statesList = $state.get(); //just getting states
-
-        this.states = statesList.filter((state) => {
+        let statesList = $state.get().filter((state) => {
             if (state.title) {
                 if (userService.getLoggedInUser() === null) {
                     if (!state.loginRequired) {
@@ -26,6 +24,11 @@ export default class HeaderController {
                     }
                 }
             }
+        }); 
+
+        //sorting headers for particular order according to orderNumber prop
+        this.states = statesList.sort((a, b) => {
+            return a.orderNumber - b.orderNumber;
         });
     }
 }
