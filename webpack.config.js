@@ -1,3 +1,5 @@
+var path = require('path');
+
 module.exports = {
     context: __dirname + "/app",
     entry: "./scripts/app.js",
@@ -26,7 +28,10 @@ module.exports = {
             loaders: ["style-loader", "css-loader", "sass-loader"]
         }]
     },
+    resolve:{
+        root: path.join(__dirname, 'app')
+    },
     devServer: {
-        port: 8001
+        port: 8080
     }
 };

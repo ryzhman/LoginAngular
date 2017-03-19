@@ -6,12 +6,15 @@ import homeController from "../controller/HomeConroller";
 import aboutController from "../controller/AboutController";
 import loginController from "../controller/LoginController";
 import logoutController from "../controller/LogoutController";
+import signUpController from "../controller/signUpController";
 
 import headerTmpl from "../../../views/common/header.html";
 import logoutTmpl from '../../../views/common/logout.html';
 import loginTmpl from '../../../views/common/login.html';
 import homeTmpl from '../../../views/user/home.html';
 import aboutTmpl from '../../../views/common/about.html';
+import signUpTmpl from '../../../views/common/signUp.html';
+
 
 
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
@@ -56,7 +59,22 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
                     controller: loginController,
                     controllerAs: 'ctrl'
                 }
-            },
+            }
+        })
+        .state('signUp', {
+            url: "/register",
+            title: "Sign up",
+            orderNumber: 6,
+            adminRoleRequired: false,
+            loginRequired: false,
+            views: {
+                'header': header,
+                '': {
+                    template: signUpTmpl,
+                    controller: signUpController,
+                    controllerAs: 'ctrl'
+                }
+            }
         })
         .state('logout', {
             url: '/logout',
