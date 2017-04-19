@@ -15,8 +15,6 @@ import homeTmpl from '../../../views/user/home.html';
 import aboutTmpl from '../../../views/common/about.html';
 import signUpTmpl from '../../../views/common/signUp.html';
 
-
-
 export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
     "use strict";
 

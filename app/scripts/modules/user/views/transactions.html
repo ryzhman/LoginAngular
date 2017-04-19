@@ -1,0 +1,27 @@
+<div class="container-fluid">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <th>#</th>
+                <th>Name</th>
+                <th>Password</th>
+                <th>Email</th>
+                <th>Group</th>
+            </thead>
+            <tr ng-repeat="transaction in ctrl.transactionList track by $index">
+                <td>{{$index+1}}</td>
+                <td>{{transaction.date}}</td>
+                <td>{{transaction.category}}</td>
+                <td>{{transaction.description}}</td>
+                <td>{{transaction.sum}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <a href class="btn btn-success" ui-sref="admin.addUser">Add new transaction</a>
+        </div>
+    </div>
+
+</div>

@@ -18,10 +18,10 @@ export default class HeaderController {
                     }
                 } else {
                     if (userService.isAdmin(userService.getLoggedInUser())) {
-                        return state.title && state.title !== 'Login';
+                        return state.title && state.title !== 'Login' && state.title !== "Sign up" && state.title !== "Logout";
                     } else {
                         if (!state.adminRoleRequired) {
-                            return state.title && state.title !== 'Login';
+                            return state.title && state.title !== 'Login' && state.title !== "Sign up" && state.title !== "Logout";
                         }
                     }
                 }

@@ -22,6 +22,8 @@ export default class LoginController {
     userLogin() {
         "use strict";
 
+        this.login = "user1";
+        this.pass = "user1";
         let user = this.userService.userLogin(this.login, this.pass);
         this.login = '';
         this.pass = '';
