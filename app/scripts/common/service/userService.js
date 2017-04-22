@@ -77,7 +77,6 @@ export default class UserService {
         "use strict";
 
         this.userList.push(newUser);
-        // localStorage.set(newUser.name, newUser);
     }
 
     getUsers() {

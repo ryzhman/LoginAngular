@@ -11,7 +11,6 @@ angular.module('app', [
         adminModule.name,
         userModule.name,
         ngStorage
-        // 'ui.bootstrap'
     ])
     .config(commonRouter)
     .service('userService', userService)
@@ -21,7 +20,7 @@ angular.module('app', [
         $rootScope.$on('$stateChangeSuccess', (event, toState) => {
             $rootScope.pageTitle = toState.title;
         });
-
+/*
         $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             console.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
         });
@@ -42,5 +41,5 @@ angular.module('app', [
         $rootScope.$on('$stateNotFound', function(event, unfoundState, fromState, fromParams) {
             console.log('$stateNotFound ' + unfoundState.to + '  - fired when a state cannot be found by its name.');
             console.log(unfoundState, fromState, fromParams);
-        });
+        });*/
     });

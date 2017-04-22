@@ -3,10 +3,10 @@
  */
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
-// import addNewUserController from "./controller/addNewUserController";
+import addNewTransactionController from "./controller/addNewTransactionController";
 import userMainTmpl from "./views/user.html";
 import transactionsTmpl from "./views/transactions.html";
-// import addNewUserTmpl from "./views/addNewUser.html";
+import addNewTransactionTmpl from "./views/addNewUser.html";
 import headerTmpl from "../../../views/common/header.html";
 import transactionService from "./service/transactionService";
 
@@ -48,5 +48,25 @@ export default ($stateProvider) => {
                     return transactionService.getAllTransactions();
                 }
             }
+        })
+        .state('user.newTransaction', {
+            url: '/transaction',
+            title: 'Create New transaction',
+            loginRequired: true,
+            adminRoleRequired: false,
+            template: addNewTransactionTmpl,
+            controller: addNewTransactionController,
+            /*views: {
+                'form': {
+                    controller: CreateUserCtrl,
+                    controllerAs: 'ctrl',
+                    template: createUserFormTemplate
+                },
+                'list': {
+                    controller: CreateUserListCtrl,
+                    controllerAs: 'ctrl',
+                    template: createUserListTemplate
+                }
+            }*/
         });
 };

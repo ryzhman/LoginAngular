@@ -10,14 +10,14 @@
             </li>
         </ul>
         <ul class="nav navbar-nav navbar-right">
-            <li>
+            <li ng-if="!ctrl.loggedInUser">
                 <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Login').name}}"><span class="glyphicon glyphicon-log-in"></span> {{ctrl.getState('Login').title}}</a>
             </li>
-            <li>
+            <li ng-if="!ctrl.loggedInUser">
                 <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Sign up').name}}"> {{ctrl.getState('Sign up').title}}</a>
                 <!-- //todo finish here -->
             </li>
-            <li>
+            <li ng-if="ctrl.loggedInUser"> 
                 <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Logout').name}}"><span class="glyphicon glyphicon-log-out"></span> {{ctrl.getState('Logout').title}}</a>
             </li>
         </ul>

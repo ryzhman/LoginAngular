@@ -3,10 +3,10 @@
         <table class="table">
             <thead>
                 <th>#</th>
-                <th>Name</th>
-                <th>Password</th>
-                <th>Email</th>
-                <th>Group</th>
+                <th>Date</th>
+                <th>Category</th>
+                <th>Description</th>
+                <th>Total sum</th>
             </thead>
             <tr ng-repeat="transaction in ctrl.transactionList track by $index">
                 <td>{{$index+1}}</td>
@@ -20,7 +20,7 @@
 
     <div class="row">
         <div class="col-xs-12">
-            <a href class="btn btn-success" ui-sref="admin.addUser">Add new transaction</a>
+            <a href class="btn btn-success" ui-sref="user.newTransaction">Add new transaction</a>
         </div>
     </div>
 
