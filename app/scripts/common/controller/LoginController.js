@@ -8,6 +8,7 @@ export default class LoginController {
         "ngInject";
 
         this.userService = userService;
+        this.allStates = $state.get();
         this.$state = $state;
         this.passwordsUnequal = true;
     }
@@ -29,13 +30,12 @@ export default class LoginController {
         this.pass = '';
 
         if (!user) {
-            alert("Error during logging in");
-            this.$state.go('login');
+            this.$state.go(this.userService.redirectToState(this.allStates, 'login')); //todo add error on logging in
         } else {
             if (this.userService.isAdmin(user)) {
-                this.$state.go('admin.allUsers');
+                this.$state.go(this.userService.redirectToState(this.allStates, 'Users list'));
             } else {
-                this.$state.go('about');
+                this.$state.go(this.userService.redirectToState(this.allStates, 'Transactions list'));
             }
         }
     }

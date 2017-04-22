@@ -6,13 +6,14 @@ export default class LogoutController {
 
         this.userService = userService;
         this.$state = $state;
+        this.allStates = $state.get();
     }
 
     logout() {
         "use strict";
 
         this.userService.loggedInUser = null;
-        this.$state.go('home');
+        this.$state.go(this.userService.findStateToRedirect(this.allStates, 'Home'));
     }
 
 }

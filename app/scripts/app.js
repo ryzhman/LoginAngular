@@ -8,9 +8,9 @@ import userModule from "./modules/user/app";
 
 angular.module('app', [
         uiRouter,
-        adminModule.name,
+        ngStorage,
         userModule.name,
-        ngStorage
+        adminModule.name,
     ])
     .config(commonRouter)
     .service('userService', userService)

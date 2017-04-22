@@ -5,24 +5,29 @@
     <meta charset="UTF-8" name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
     <title>{{pageTitle}} | Login application</title>
     <base href="/">
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css">
-    <link href="https://fonts.googleapis.com/css?family=Maven+Pro" rel="stylesheet">
+    <!--Import materialize.css-->
+    <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Maven+Pro">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/css/materialize.min.css">
+
+    <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>           
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/materialize/0.97.3/js/materialize.min.js"></script>       
+
     <link rel="stylesheet" type="text/css" href="./app/styles/styles.css">
 </head>
 
 <body>
-    <div> 
-        <div>
-        <ui-view name="header"></ui-view>
-        </div>
-
-        <div class="container">
-        <ui-view>
-            Loading . . .
-        </ui-view>
-        </div>
     <div>
-    <script src="build/bundle.js"></script>
+        <div>
+            <ui-view name="header"></ui-view>
+        </div>
+        <div class="container">
+            <ui-view>
+                Loading . . .
+            </ui-view>
+        </div>
+        <div>
+            <script src="build/bundle.js"></script>
 </body>
 
 </html>

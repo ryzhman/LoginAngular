@@ -2,7 +2,7 @@
  * Created by Олександр on 26.02.2017.
  */
 
-export default class UsersListController {
+export default class ReportsController {
     constructor($state, users, isAdmin) {
         "use strict";
         "ngInject";

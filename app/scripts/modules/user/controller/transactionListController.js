@@ -3,7 +3,7 @@
  */
 
 export default class TransactionListController {
-    constructor($state, transactionList, $window) {
+    constructor($state, transactionList) {
         "use strict";
         "ngInject";
 

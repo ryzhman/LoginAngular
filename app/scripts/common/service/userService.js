@@ -85,4 +85,11 @@ export default class UserService {
         return this.userList;
     }
 
+    findStateToRedirect(statesArr, destination) {
+        let state =  statesArr.filter((state) => {
+            return state.title === destination;
+        })[0];
+        return state.name;
+    }
+
 }

@@ -1,0 +1,35 @@
+<div class="container-fluid">
+    <h1>To create a new transaction add appropriate info here</h1>
+    <form ng-submit="ctrl.addNewTransaction()" class="form-horizontal" role="form" autocomplete="off">
+        <div class="form-group">
+            <label for="date" class="col-sm-2 control-label">Transaction date</label>
+            <div class="col-sm-4">
+                <input id="date" type="text" ng-model='ctrl.date' placeholder="Enter date" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="sum" class="col-sm-2 control-label">Total sum</label>
+            <div class="col-sm-4">
+                <input id="sum" type="text" ng-model='ctrl.sum' placeholder="Enter sum" class="form-control" required>
+            </div>
+        </div>
+        <div class="form-group">
+            <label for="description" class="col-sm-2 control-label">Description</label>
+            <div class="col-sm-4">
+                <input id="description" type="text" ng-model='ctrl.description' placeholder="Enter Description" class="form-control">
+            </div>
+        </div>
+        <div class="form-group" autocomplete="off">
+            <label for="category" class="col-sm-2 control-label">Transaction category</label>
+            <div class="col-sm-4">
+                <select id="category" name="group" ng-model="ctrl.category" class="form-control">
+                    <option value='daily'>Daily spendings</option>
+                    <option value='monthly'>Monthly spendings</option>
+                    <option value='quarterly'>Quarterly spendings</option>
+                    <option value='yearly'>Yearly spendings</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new transaction</button>
+    </form>
+</div>

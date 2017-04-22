@@ -3,12 +3,14 @@
  */
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
-import addNewTransactionController from "./controller/addNewTransactionController";
+import newTransactionController from "./controller/newTransactionCtrl";
+
 import userMainTmpl from "./views/user.html";
 import transactionsTmpl from "./views/transactions.html";
-import addNewTransactionTmpl from "./views/addNewUser.html";
+import newTransactionTmpl from "./views/newTransaction.html";
 import headerTmpl from "../../../views/common/header.html";
-import transactionService from "./service/transactionService";
+
+// import transactionService from "./service/transactionService";
 
 export default ($stateProvider) => {
     "use strict";
@@ -54,8 +56,9 @@ export default ($stateProvider) => {
             title: 'Create New transaction',
             loginRequired: true,
             adminRoleRequired: false,
-            template: addNewTransactionTmpl,
-            controller: addNewTransactionController,
+            template: newTransactionTmpl,
+            controller: newTransactionController,
+            controllerAs: 'ctrl'
             /*views: {
                 'form': {
                     controller: CreateUserCtrl,

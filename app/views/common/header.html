@@ -1,25 +1,28 @@
-<nav class="navbar navbar-default">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">MyFinances</a>
-            <!-- add logo -->
-        </div>
-        <ul class="nav navbar-nav">
-            <li ui-sref-active="active" ng-repeat="route in ctrl.generalStates">
-                <a href ui-sref="{{route.name}}">{{route.title}}</a>
-            </li>
-        </ul>
-        <ul class="nav navbar-nav navbar-right">
+<nav class="white" role="navigation">
+    <div class="nav-wrapper container">
+        <a id="logo-container" href="#" class="brand-logo">myFinance</a>
+        <ul class="right hide-on-med-and-down">
             <li ng-if="!ctrl.loggedInUser">
                 <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Login').name}}"><span class="glyphicon glyphicon-log-in"></span> {{ctrl.getState('Login').title}}</a>
             </li>
             <li ng-if="!ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Sign up').name}}"> {{ctrl.getState('Sign up').title}}</a>
-                <!-- //todo finish here -->
+                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Sign up').name}}"> {{ctrl.getState('Sign up').title}}</a> <!-- todo finish here -->
             </li>
-            <li ng-if="ctrl.loggedInUser"> 
+             <li ng-if="ctrl.loggedInUser">
                 <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Logout').name}}"><span class="glyphicon glyphicon-log-out"></span> {{ctrl.getState('Logout').title}}</a>
             </li>
         </ul>
+        <ul id="nav-mobile" class="side-nav">
+            <li ng-if="!ctrl.loggedInUser">
+                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Login').name}}"><span class="glyphicon glyphicon-log-in"></span> {{ctrl.getState('Login').title}}</a>
+            </li>
+            <li ng-if="!ctrl.loggedInUser">
+                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Sign up').name}}"> {{ctrl.getState('Sign up').title}}</a> <!-- todo finish here -->
+            </li>
+            <li ng-if="ctrl.loggedInUser">
+                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Logout').name}}"><span class="glyphicon glyphicon-log-out"></span> {{ctrl.getState('Logout').title}}</a>
+            </li>
+        </ul>
+        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">Menu</i></a>
     </div>
 </nav>
