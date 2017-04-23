@@ -7,7 +7,8 @@ import commonRouter from "./router";
 import transactionService from "./service/transactionService";
 
 let userModule = angular.module('app.userModule', []);
-userModule.config(commonRouter);
-userModule.service('transactionService', transactionService);
+userModule
+.config(commonRouter)
+.service('transactionService', transactionService);
 
 export default userModule;

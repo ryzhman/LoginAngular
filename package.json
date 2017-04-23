@@ -10,7 +10,6 @@
   "license": "ISC",
   "dependencies": {
     "angular": "^1.6.2",
-    "angular-local-storage": "^0.5.2",
     "angular-templatecache-loader": "^0.2.0",
     "angular-ui-bootstrap": "^2.5.0",
     "angular-ui-router": "^0.4.2",
@@ -20,6 +19,7 @@
     "jshint": "^2.9.4",
     "jshint-loader": "^0.8.4",
     "materialize-css": "^0.98.2",
+    "ngstorage": "^0.3.11",
     "webpack": "^1.14.0"
   },
   "devDependencies": {

@@ -1,14 +1,15 @@
 import angular from "angular";
 import uiRouter from "angular-ui-router";
-import ngStorage from "angular-local-storage";
+import ngStorage from "ngStorage";
 import commonRouter from "./common/config/commonRouter";
-import userService from "./common/service/userService";
 import adminModule from "./modules/admin/app";
 import userModule from "./modules/user/app";
 
+import userService from "./common/service/userService";
+
 angular.module('app', [
         uiRouter,
-        ngStorage,
+        'ngStorage',
         userModule.name,
         adminModule.name,
     ])
@@ -20,8 +21,8 @@ angular.module('app', [
         $rootScope.$on('$stateChangeSuccess', (event, toState) => {
             $rootScope.pageTitle = toState.title;
         });
-/*
-        $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+
+       /* $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
             console.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
         });
 

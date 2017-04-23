@@ -10,8 +10,6 @@ import transactionsTmpl from "./views/transactions.html";
 import newTransactionTmpl from "./views/newTransaction.html";
 import headerTmpl from "../../../views/common/header.html";
 
-// import transactionService from "./service/transactionService";
-
 export default ($stateProvider) => {
     "use strict";
 
@@ -38,38 +36,37 @@ export default ($stateProvider) => {
         })
         .state('user.allTransactions', {
             url: '/transactions',
-            title: 'Transactions list',
-            orderNumber: 2,
+            title: 'Transactions',
             adminRoleRequired: false,
             loginRequired: true,
             template: transactionsTmpl,
             controller: transactionListController,
-            controllerAs: 'ctrl',
-            resolve: {
-                transactionList: (transactionService) => {
+            controllerAs: 'ctrl'
+           /* resolve: {
+                users: (transactionService) => {
                     return transactionService.getAllTransactions();
                 }
-            }
+            }*/
         })
         .state('user.newTransaction', {
             url: '/transaction',
-            title: 'Create New transaction',
+            title: 'New transaction',
             loginRequired: true,
             adminRoleRequired: false,
             template: newTransactionTmpl,
             controller: newTransactionController,
             controllerAs: 'ctrl'
-            /*views: {
-                'form': {
-                    controller: CreateUserCtrl,
-                    controllerAs: 'ctrl',
-                    template: createUserFormTemplate
-                },
-                'list': {
-                    controller: CreateUserListCtrl,
-                    controllerAs: 'ctrl',
-                    template: createUserListTemplate
-                }
-            }*/
+                /*views: {
+                    'form': {
+                        controller: CreateUserCtrl,
+                        controllerAs: 'ctrl',
+                        template: createUserFormTemplate
+                    },
+                    'list': {
+                        controller: CreateUserListCtrl,
+                        controllerAs: 'ctrl',
+                        template: createUserListTemplate
+                    }
+                }*/
         });
 };
