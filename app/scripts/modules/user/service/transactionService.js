@@ -1,19 +1,23 @@
 /**
  * Created by Олександр on 25.02.2017.
  */
+import transactionModal from '../modal/transaction/transactionModal.html';
+import transactionModalController from '../modal/transaction/transactionModalController';
+
 export default class TransactionService {
-    constructor($filter/*, $scope, $localStorage, $sessionStorage*/) {
+    constructor($filter/*, $scope, $localStorage, $sessionStorage*/ ) {
         "use strict";
         "ngInject";
 
         this.$filter = $filter;
         // $scope.$storage = $localStorage;
         // console.log($storage);
-       /* this.initStorage();
-        this.window = this.window;
-        console.log(this.window);*/
-        
+        /* this.initStorage();
+         this.window = this.window;
+         console.log(this.window);*/
+
     }
+
 
     /*initStorage() {
         $storage.trnsact = JSON.stringify([{

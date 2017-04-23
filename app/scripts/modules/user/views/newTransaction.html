@@ -1,35 +1,53 @@
-<div class="container-fluid">
-    <h1>To create a new transaction add appropriate info here</h1>
-    <form ng-submit="ctrl.addNewTransaction()" class="form-horizontal" role="form" autocomplete="off">
+<div class="container-fluid container">
+    <h4>To create a new transaction add appropriate info here</h4>
+    <!-- <form ng-submit="ctrl.addNewTransaction()" class="form-horizontal" role="form" autocomplete="off"> -->
+    <form ng-submit="ctrl.addNewTransaction()" class="col s12" autocomplete="off">
         <div class="form-group">
-            <label for="date" class="col-sm-2 control-label">Transaction date</label>
-            <div class="col-sm-4">
-                <input id="date" type="text" ng-model='ctrl.date' placeholder="Enter date" class="form-control" required>
+            <div class="row">
+                <label>Transaction date</label>
+                <input type="date" class="datepicker" ng-model="ctrl.date" value='{{new Date()}}'>
             </div>
         </div>
-        <div class="form-group">
+        <div class="row">
             <label for="sum" class="col-sm-2 control-label">Total sum</label>
             <div class="col-sm-4">
                 <input id="sum" type="text" ng-model='ctrl.sum' placeholder="Enter sum" class="form-control" required>
             </div>
         </div>
-        <div class="form-group">
+        <div class="row">
             <label for="description" class="col-sm-2 control-label">Description</label>
             <div class="col-sm-4">
                 <input id="description" type="text" ng-model='ctrl.description' placeholder="Enter Description" class="form-control">
             </div>
         </div>
-        <div class="form-group" autocomplete="off">
+        <div class="row" autocomplete="off">
             <label for="category" class="col-sm-2 control-label">Transaction category</label>
             <div class="col-sm-4">
-                <select id="category" name="group" ng-model="ctrl.category" class="form-control">
-                    <option value='daily'>Daily spendings</option>
-                    <option value='monthly'>Monthly spendings</option>
-                    <option value='quarterly'>Quarterly spendings</option>
-                    <option value='yearly'>Yearly spendings</option>
+                <select id="category" name="group" ng-model="ctrl.category" required>
+                    <optgroup label="Daily spendings">
+                        <option value="1">Mango</option>
+                        <option value="2">Orange</option>
+                        <option value="3">Apple</option>
+                    </optgroup>
+                    <optgroup label="Monthly spendings">
+                        <option value="4">Brinjal</option>
+                        <option value="5">Potato</option>
+                        <option value="6">Tomato</option>
+                    </optgroup>
+                    <optgroup label="Quarterly spendings">
+                        <option value="4">Brinjal</option>
+                        <option value="5">Potato</option>
+                        <option value="6">Tomato</option>
+                    </optgroup>
+                    <optgroup label="Yearly spendings">
+                        <option value="4">Brinjal</option>
+                        <option value="5">Potato</option>
+                        <option value="6">Tomato</option>
+                    </optgroup>
                 </select>
             </div>
         </div>
         <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new transaction</button>
+        <a href class="btn btn-primary" ng-click="ctrl.close()">Close</a>
     </form>
 </div>

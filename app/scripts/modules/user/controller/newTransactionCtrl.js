@@ -5,6 +5,9 @@ export default class NewTransactionCtrl {
 
         this.$state = $state;
         this.transactionService = transactionService;
+        $(document).ready(function() {
+            $('select').material_select();
+        });
     }
 
     addNewTransaction() {

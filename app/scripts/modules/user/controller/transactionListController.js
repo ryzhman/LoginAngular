@@ -3,15 +3,19 @@
  */
 
 export default class TransactionListController {
-    constructor($state, $scope, $localStorage, $sessionStorage) {
+    constructor($state, $scope, $rootscope, $localStorage, $sessionStorage, transactionService) {
         "use strict";
         "ngInject";
 
-        $scope.$storage = $localStorage;
-        this.storage = $scope.$storage;
+
+        this.transactionService = transactionService;
+        $rootscope.$storage = $localStorage;
+        this.storage = $rootscope.$storage;
         this.initStorage();
         this.transactionList = this.storage.trnsact;
-
+        this.$scope = $scope;
+        this.date = new Date();
+        // this.$mdDialog = $mdDialog;
     }
 
     initStorage() {
@@ -24,12 +28,11 @@ export default class TransactionListController {
     }
 
     _storeTransaction(transactionsArr) {
-        console.log("_storeTransaction");
-
         this.storage.trnsact = transactionsArr;
     }
 
     addNewTransaction(date, category, description, sum) {
+
         let transaction = {
             'date': date,
             'category': category,
@@ -43,13 +46,47 @@ export default class TransactionListController {
     }
 
     getAllTransactions() {
-        // console.log($storage);
-        // console.log(JSON.parse(this.$localStorage.getItem("trnsact")));
         //TODO change to call BE 
-        // return JSON.parse($localStorage.getItem("trnsact"));
         return this.storage.trnsact;
     }
 
+
+
+    editTransaction(transactionId) {
+
+    }
+
+    newTransactionModal() {
+        // $('#modal1').modal('open');
+        // this.$scope.openModal = true;
+        // $(document).ready(function() {
+        //     $('.modal1').leanModal();
+        // });
+
+    }
+
+    /* readyCallback() {
+         Materialize.toast("Modal ready", 4000);
+     }*/
+
+    /*  showPrompt(ev) {
+          // Appending dialog to document.body to cover sidenav in docs app
+          var confirm = this.$mdDialog.prompt()
+              .title('What would you name your dog?')
+              .textContent('Bowser is a common name.')
+              .placeholder('Dog name')
+              .ariaLabel('Dog name')
+              .initialValue('Buddy')
+              .targetEvent(ev)
+              .ok('Okay!')
+              .cancel('I\'m a cat person');
+
+          this.$mdDialog.show(confirm).then(function(result) {
+              this.$scope.status = 'You decided to name your dog ' + result + '.';
+          }, function() {
+              this.$scope.status = 'You didn\'t name your dog.';
+          });
+      };*/
 
 
 

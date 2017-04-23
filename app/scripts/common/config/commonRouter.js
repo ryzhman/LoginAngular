@@ -27,6 +27,7 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
     };
 
     $locationProvider.hashPrefix("!");
+    $urlRouterProvider.otherwise('/home');
 
     $stateProvider
         .state("home", {
@@ -105,5 +106,4 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             }
         });
 
-    $urlRouterProvider.otherwise('/home');
 };
