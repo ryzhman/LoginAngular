@@ -17,6 +17,9 @@ module.exports = {
             test: /\.html$/,
             loader: "angular-templatecache-loader"
         }, {
+            test: /\.(png|jpg)$/,
+            loader: "url-loader"
+        }, {
             test: /\.js$/,
             exclude: /(node_modules|bower_components)/,
             loader: 'babel-loader',
@@ -28,7 +31,7 @@ module.exports = {
             loaders: ["style-loader", "css-loader", "sass-loader"]
         }]
     },
-    resolve:{
+    resolve: {
         root: path.join(__dirname, 'app')
     },
     devServer: {

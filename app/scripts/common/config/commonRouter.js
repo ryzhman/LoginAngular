@@ -63,7 +63,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
         .state('signUp', {
             url: "/register",
             title: "Sign up",
-            orderNumber: 6,
             adminRoleRequired: false,
             loginRequired: false,
             views: {

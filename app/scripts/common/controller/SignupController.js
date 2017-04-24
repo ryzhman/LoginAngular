@@ -1,8 +1,14 @@
 export default class SignUpController {
-    constructor() {
+    constructor($state) {
         "ngInject";
-
         'use strict';
+
+
+
+    }
+
+    arePasswordsEquals() {
+        return this.password === this.repeatPassword;
     }
 
 
