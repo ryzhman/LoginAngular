@@ -3,11 +3,15 @@
  */
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
-import newTransactionController from "./controller/newTransactionCtrl";
+import categoryController from "./controller/categoryController";
+// import newTransactionController from "./controller/newTransactionCtrl";
+// import newCategoryController from "./controller/newTransactionCtrl";
 
 import userMainTmpl from "./views/user.html";
 import transactionsTmpl from "./views/transactions.html";
+import categoriesTmpl from "./views/categories.html";
 import newTransactionTmpl from "./views/newTransaction.html";
+import newCategoryTmpl from "./views/newCategory.html";
 import headerTmpl from "../../../views/common/header.html";
 
 export default ($stateProvider) => {
@@ -42,11 +46,6 @@ export default ($stateProvider) => {
             template: transactionsTmpl,
             controller: transactionListController,
             controllerAs: 'ctrl'
-           /* resolve: {
-                users: (transactionService) => {
-                    return transactionService.getAllTransactions();
-                }
-            }*/
         })
         .state('user.newTransaction', {
             url: '/transaction',
@@ -56,17 +55,23 @@ export default ($stateProvider) => {
             template: newTransactionTmpl,
             controller: transactionListController,
             controllerAs: 'ctrl'
-                /*views: {
-                    'form': {
-                        controller: CreateUserCtrl,
-                        controllerAs: 'ctrl',
-                        template: createUserFormTemplate
-                    },
-                    'list': {
-                        controller: CreateUserListCtrl,
-                        controllerAs: 'ctrl',
-                        template: createUserListTemplate
-                    }
-                }*/
+        })
+        .state('user.allCategories', {
+            url: '/categories',
+            title: 'Categories',
+            loginRequired: true,
+            adminRoleRequired: false,
+            template: categoriesTmpl,
+            controller: categoryController,
+            controllerAs: 'ctrl'
+        })
+        .state('user.newCategory', {
+            url: '/category',
+            title: 'Add new category',
+            loginRequired: true,
+            adminRoleRequired: false,
+            template: newCategoryTmpl,
+            controller: categoryController,
+            controllerAs: 'ctrl'
         });
 };

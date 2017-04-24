@@ -1,0 +1,24 @@
+<div class="container-fluid container">
+    <h4>To create a new category add appropriate info here</h4>
+    <form ng-submit="ctrl.addNewCategory()" class="col s12" autocomplete="off">
+        <div class="row">
+            <label for="title" class="col-sm-2 control-label">Category title</label>
+            <div class="col-sm-4">
+                <input id="description" type="text" ng-model='ctrl.title' placeholder="Enter title" class="form-control">
+            </div>
+        </div>
+        <div class="row" autocomplete="off">
+            <label for="category" class="col-sm-2 control-label">Parent category</label>
+            <div class="col-sm-4">
+                <select id="category" name="group" ng-model="ctrl.parentCategory" required>
+                    <option value="1">Daily spendings</option>
+                    <option value="2">Monthly spendings</option>
+                    <option value="3">Quarterly spendings</option>
+                    <option value="4">Yearly spendings</option>
+                </select>
+            </div>
+        </div>
+        <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new transaction</button>
+        <a href class="btn btn-primary" ng-click="ctrl.backToCategoryList()">Back</a>
+    </form>
+</div>

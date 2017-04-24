@@ -1,0 +1,23 @@
+<div class="container-fluid">
+    <div class="row">
+        <table class="table">
+            <thead>
+                <th>#</th>
+                <th>Title</th>
+                <th>Parent category</th>
+            </thead>
+            <tr ng-repeat="category in ctrl.getAllCategories() track by $index">
+                <td>{{$index+1}}</td>
+                <td>{{category.title}}</td>
+                <td>{{category.parentCategory}}</td>
+            </tr>
+        </table>
+    </div>
+
+    <div class="row">
+        <div class="col-xs-12">
+            <a href class="btn btn-success" ui-sref="user.addNewCategory()">Add new category</a>
+        </div>
+    </div>
+
+</div>
