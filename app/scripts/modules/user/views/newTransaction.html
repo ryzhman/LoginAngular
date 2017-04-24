@@ -1,12 +1,18 @@
 <div class="container-fluid container">
     <h4>To create a new transaction add appropriate info here</h4>
     <!-- <form ng-submit="ctrl.addNewTransaction()" class="form-horizontal" role="form" autocomplete="off"> -->
-    <form ng-submit="ctrl.addNewTransaction()" class="col s12" autocomplete="off">
-        <div class="form-group">
+    <form ng-submit="contr.addNewTransaction()" autocomplete="off"><!-- class="col s12" --> 
+        <!-- div class="form-group">
             <div class="row">
                 <label>Transaction date</label>
                 <input type="date" class="datepicker" ng-model="ctrl.date">
             </div>
+        </div> -->
+        <div layout-gt-xs="row">
+        <div flex-gt-xs>
+            <!-- <label for="sum" class="col-sm-2 control-label">Transaction date</label> -->
+            <md-datepicker ng-model="contr.date" md-placeholder="Enter date"></md-datepicker>
+        </div>
         </div>
         <div class="row">
             <label for="sum" class="col-sm-2 control-label">Total sum</label>

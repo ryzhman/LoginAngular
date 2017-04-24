@@ -54,7 +54,7 @@ export default ($stateProvider) => {
             adminRoleRequired: false,
             template: newTransactionTmpl,
             controller: transactionListController,
-            controllerAs: 'ctrl'
+            controllerAs: 'contr'
         })
         .state('user.allCategories', {
             url: '/categories',
