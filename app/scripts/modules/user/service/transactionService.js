@@ -1,57 +1,40 @@
 /**
  * Created by Олександр on 25.02.2017.
  */
-import transactionModal from '../modal/transaction/transactionModal.html';
-import transactionModalController from '../modal/transaction/transactionModalController';
 
 export default class TransactionService {
-    constructor($filter/*, $scope, $localStorage, $sessionStorage*/ ) {
+    constructor($filter) {
         "use strict";
         "ngInject";
 
         this.$filter = $filter;
-        // $scope.$storage = $localStorage;
-        // console.log($storage);
-        /* this.initStorage();
-         this.window = this.window;
-         console.log(this.window);*/
-
+        this.transactionsArr = [];
+        this.initStorage();
     }
 
 
-    /*initStorage() {
-        $storage.trnsact = JSON.stringify([{
-            'date': 123,
-            'category': 'aaa',
-            'description': 'description',
-            'sum': 1999
-        }]);
-    }
-
-    _storeTransaction(transactionsArr) {
-        console.log("_storeTransaction");
-        
-        // this.window.localStorage.setItem("trnsact", JSON.stringify(transactionsArr));
-        $storage.trnsact = JSON.stringify(transactionsArr);
+    initStorage() {
+        this.transactionsArr.push({
+            date: new Date(),
+            category: 'aaa',
+            description: 'description',
+            sum: 1999
+        });
     }
 
     addNewTransaction(date, category, description, sum) {
         let transaction = {
-            'date': date,
-            'category': category,
-            'description': description,
-            'sum': sum
+            date: date,
+            category: category,
+            description: description,
+            sum: sum
         };
-        let allTransactions = JSON.parse($scope.$storage.getItem("trnsact"));
-        allTransactions.push(transaction);
-
-        this._storeTransaction(allTransactions);
+        this.transactionsArr.push(transaction);
+        return this.transactionsArr;
     }
 
     getAllTransactions() {
-        console.log($storage);
-        console.log(JSON.parse(this.$localStorage.getItem("trnsact")));
         //TODO change to call BE 
-        return JSON.parse($localStorage.getItem("trnsact"));
-    }*/
+        return this.transactionsArr;
+    }
 }

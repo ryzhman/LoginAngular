@@ -8,9 +8,9 @@
                 <th>Description</th>
                 <th>Total sum</th>
             </thead>
-            <tr ng-repeat="transaction in ctrl.transactionList track by $index">
+            <tr ng-repeat="transaction in ctrl.getAllTransactions() track by $index">
                 <td>{{$index+1}}</td>
-                <td>{{transaction.date}}</td>
+                <td>{{transaction.date | date:'dd/MM/yyyy'}}</td>
                 <td>{{transaction.category}}</td>
                 <td>{{transaction.description}}</td>
                 <td>{{transaction.sum}}</td>

@@ -54,7 +54,7 @@ export default ($stateProvider) => {
             loginRequired: true,
             adminRoleRequired: false,
             template: newTransactionTmpl,
-            controller: newTransactionController,
+            controller: transactionListController,
             controllerAs: 'ctrl'
                 /*views: {
                     'form': {

@@ -5,7 +5,7 @@
         <div class="form-group">
             <div class="row">
                 <label>Transaction date</label>
-                <input type="date" class="datepicker" ng-model="ctrl.date" value='{{new Date()}}'>
+                <input type="date" class="datepicker" ng-model="ctrl.date">
             </div>
         </div>
         <div class="row">
@@ -25,14 +25,15 @@
             <div class="col-sm-4">
                 <select id="category" name="group" ng-model="ctrl.category" required>
                     <optgroup label="Daily spendings">
-                        <option value="1">Mango</option>
-                        <option value="2">Orange</option>
-                        <option value="3">Apple</option>
+                        <option value="1">Grocaries</option>
+                        <option value="2">Restaurants</option>
+                        <option value="3">Commuting</option>
                     </optgroup>
                     <optgroup label="Monthly spendings">
-                        <option value="4">Brinjal</option>
-                        <option value="5">Potato</option>
-                        <option value="6">Tomato</option>
+                        <option value="4">Payment fro house maintanence</option>
+                        <option value="5">Electricity</option>
+                        <option value="6">Gas</option>
+                        <option value="6">Heating</option>
                     </optgroup>
                     <optgroup label="Quarterly spendings">
                         <option value="4">Brinjal</option>
@@ -48,6 +49,6 @@
             </div>
         </div>
         <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new transaction</button>
-        <a href class="btn btn-primary" ng-click="ctrl.close()">Close</a>
+        <a href class="btn btn-primary" ng-click="ctrl.backToTransactionsList()">Back</a>
     </form>
 </div>

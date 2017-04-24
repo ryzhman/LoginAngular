@@ -1,59 +1,68 @@
 /**
  * Created by Олександр on 26.02.2017.
  */
+// import transactionService from './service/transactionService';
 
 export default class TransactionListController {
-    constructor($state, $scope, $rootscope, $localStorage, $sessionStorage, transactionService) {
+    constructor($state, $scope, $rootScope, $localStorage, $sessionStorage, transactionService) {
         "use strict";
         "ngInject";
 
-
+        this.$state = $state;
         this.transactionService = transactionService;
-        $rootscope.$storage = $localStorage;
-        this.storage = $rootscope.$storage;
-        this.initStorage();
-        this.transactionList = this.storage.trnsact;
-        this.$scope = $scope;
-        this.date = new Date();
+        // $rootScope.$storage = $localStorage;
+        // this.$rootScope = $rootScope;
+        // this.$scope = $scope;
+        // $scope.$storage = $localStorage;
+        // this.storage = $scope.$storage;
+        // this.storage = $rootScope.$storage;
+        // this.initStorage();
         // this.$mdDialog = $mdDialog;
     }
 
-    initStorage() {
+    /*initStorage() {
         this.storage.trnsact = [{
-            date: 123,
+            date: new Date(),
             category: 'aaa',
             description: 'description',
             sum: 1999
         }];
-    }
+    }*/
 
-    _storeTransaction(transactionsArr) {
-        this.storage.trnsact = transactionsArr;
-    }
+    /* _storeTransaction(transactionsArr) {
+         this.storage.trnsact = transactionsArr;
+     }*/
 
-    addNewTransaction(date, category, description, sum) {
+    addNewTransaction() {
+        // let allTransactions = this.storage.trnsact;
+        this.transactionService.addNewTransaction(this.date, this.category, this.description, this.sum);
 
-        let transaction = {
-            'date': date,
-            'category': category,
-            'description': description,
-            'sum': sum
-        };
-        let allTransactions = this.storage.trnsact;
-        allTransactions.push(transaction);
+        // this.storage.trnsact = allTransactions;
 
-        this._storeTransaction(allTransactions);
+        // this._storeTransaction(allTransactions);
+        this.backToTransactionsList();
     }
 
     getAllTransactions() {
+        return this.transactionService.getAllTransactions();
         //TODO change to call BE 
-        return this.storage.trnsact;
+        // console.log(this.$rootScope.$storage.trnsact);
+        // console.log(this.storage);
+
+        // return this.storage.trnsact;
+        // return this.transactionList;
     }
-
-
 
     editTransaction(transactionId) {
 
+    }
+
+    backToTransactionsList() {
+        this.date = null;
+        this.category = null;
+        this.description = null;
+        this.sum = null;
+        this.$state.go("user.allTransactions");
     }
 
     newTransactionModal() {
