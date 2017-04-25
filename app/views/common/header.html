@@ -1,28 +1,47 @@
-<nav class="white" role="navigation">
-    <div class="nav-wrapper container">
-        <a id="logo-container" href="#" class="brand-logo">myFinance</a>
-        <ul class="right hide-on-med-and-down">
-            <li ng-if="!ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Login').name}}"><span class="glyphicon glyphicon-log-in"></span> {{ctrl.getState('Login').title}}</a>
-            </li>
-            <li ng-if="!ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Sign up').name}}"> {{ctrl.getState('Sign up').title}}</a> todo finish here
-            </li>
-             <li ng-if="ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Logout').name}}"><span class="glyphicon glyphicon-log-out"></span> {{ctrl.getState('Logout').title}}</a>
-            </li>
-        </ul>
-        <ul id="nav-mobile" class="side-nav">
-            <li ng-if="!ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Login').name}}"><span class="glyphicon glyphicon-log-in"></span> {{ctrl.getState('Login').title}}</a>
-            </li>
-            <li ng-if="!ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Sign up').name}}"> {{ctrl.getState('Sign up').title}}</a> <!-- todo finish here -->
-            </li>
-            <li ng-if="ctrl.loggedInUser">
-                <a href ui-sref-active="active" ui-sref="{{ctrl.getState('Logout').name}}"><span class="glyphicon glyphicon-log-out"></span> {{ctrl.getState('Logout').title}}</a>
-            </li>
-        </ul>
-        <a href="#" data-activates="nav-mobile" class="button-collapse"><i class="material-icons">Menu</i></a>
-    </div>
-</nav>
+<md-content class="md-padding">
+    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item md-nav-sref='home' layout="row">myFinance</md-nav-item>
+        <md-nav-item md-nav-sref='login' ng-if="!ctrl.loggedInUser" layout="row" layout-align="end none">
+            Login
+        </md-nav-item>
+        <md-nav-item md-nav-sref='signUp' ng-if="!ctrl.loggedInUser" layout="row" layout-align="end none">
+            Sign up
+        </md-nav-item>
+        <md-nav-item md-nav-sref='user.newTransaction' ng-if="ctrl.loggedInUser" layout="row" layout-align="end none">
+            New transaction
+        </md-nav-item>
+        <md-menu ng-if="ctrl.loggedInUser" layout="row" layout-align="end none">
+            <md-button class="md-icon-button" aria-label="Open sample menu" ng-mouseenter="$mdMenu.open()">
+                <md-icon md-svg-src="./menu.png" aria-label="menu"></md-icon>
+            </md-button>
+            <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
+                <md-menu-item>
+                    <md-button>
+                        <a ui-sref="user.profile">Profile</a>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <a ui-sref="user.allTransactions">Transactions</a>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <a ui-sref="user.allCategories">Categories</a>
+                    </md-button>
+                </md-menu-item>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <a ui-sref="user.reports">Report</a>
+                    </md-button>
+                </md-menu-item>
+                <md-menu-item>
+                    <md-button>
+                        <a ui-sref="logout">Logout</a>
+                    </md-button>
+                </md-menu-item>
+            </md-menu-content>
+        </md-menu>
+    </md-nav-bar>
+</md-content>

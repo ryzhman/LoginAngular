@@ -3,11 +3,12 @@
  */
 
 export default class HeaderController {
-    constructor($state, userService, $sce) {
+    constructor($state, userService, $sce, $mdSidenav) {
         "use strict";
 
         "ngInject";
 
+        this.$mdSidenav = $mdSidenav;
         this.allStates = $state.get();
 
         this.loggedInUser = userService.getLoggedInUser();
@@ -46,10 +47,12 @@ export default class HeaderController {
         this.explicitlyTrustedHtml = $sce.trustAsHtml();
     }
 
-    getState(stateName){
-        let states = this.allStates.filter((state) =>{
+    getState(stateName) {
+        let states = this.allStates.filter((state) => {
             return state.title === stateName;
         });
         return states[0];
     }
+
+
 }

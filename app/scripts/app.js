@@ -9,6 +9,7 @@ import adminModule from "./modules/admin/app";
 import userModule from "./modules/user/app";
 
 import userService from "./common/service/userService";
+import pwdChecker from "./common/utils/pwdChecker";
 
 angular.module('app', [
         uiRouter,
@@ -21,6 +22,7 @@ angular.module('app', [
     ])
     .config(commonRouter)
     .service('userService', userService)
+    .directive('pwdChecker', pwdChecker)
     .run(($rootScope) => {
         'use strict';
         "ngInject";

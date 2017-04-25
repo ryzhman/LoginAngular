@@ -1,22 +1,21 @@
-<div class="col-md-11 col-md-offset-0 col-xs-11 col-xs-offset-0 col-lg-12 col-lg-offset-0 col-sm-10 col-sm-offset-0">
-    <form class="form-horizontal" role="form" ng-submit="ctrl.userLogin()">
-        <div class="form-group">
-        <label for="name" class="col-sm-2 control-label">Login</label>
-	        <div class="col-sm-10">
-	        	<input type="text" ng-model="ctrl.login" id ="name" placeholder="Enter login here" >
-	        </div>
-        </div>
-        <div class="form-group">
-	        <label for="pass" class="col-sm-2 control-label">Password</label>
-	        <div class="col-sm-10">
-	        	<input type="text" ng-model="ctrl.pass" id="pass" placeholder="Enter password here" >
-	        </div>
-        </div>
-        <div class="form-group">
-        	<div class="col-sm-offset-2 col-sm-10">
-	        <button class="btn btn-default" type="submit">Sign in</button>
-	        </div>
-        </div>
-    </form>
-
-</div>
+<section layout="column" flex layout-align="center center">
+    <md-card class="md-whiteframe-10dp">
+        <md-card-content>
+            <form name="login" ng-submit="ctrl.userLogin()">
+                <md-input-container class="md-block">
+                    <label for="email">Email</label>
+                    <input type="email" name="email" ng-model="ctrl.login" /> <!-- required -->
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label for="password">Password</label>
+                    <input type="password" name="password" ng-model="ctrl.pass" /> <!-- required -->
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <div layout="row" layout-align="center center">
+                        <md-button class="md-raised md-accent" flex="50" type="submit">Login</md-button>
+                    </div>
+                </md-input-container>
+            </form>
+        </md-card-content>
+    </md-card>
+</section>

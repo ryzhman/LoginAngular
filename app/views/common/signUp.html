@@ -1,3 +1,43 @@
-<div>
-	Hello from Sign up
-</div>
+<md-content layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak">
+    <md-card flex="flex" flex-gt-sm="50" flex-gt-md="33">
+        <md-toolbar>
+            <div class="md-toolbar-tools">
+                <h3><span>Registration form</span></h3>
+            </div>
+        </md-toolbar>
+        <md-card-content>
+            <form name="Form">
+                <md-input-container class="md-block">
+                    <label for="email">Enter your email</label>
+                    <input type="email" name="email" ng-model="ctrl.email" placeholder="Email" required/>
+                    <div ng-messages="Form.email.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Please enter your email</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Enter your name</label>
+                    <input type="text" name="name" ng-model="ctrl.name" placeholder="Name" required md-maxlength="16" />
+                    <div ng-messages="Form.password.$error" ng-if="ctrl.validatePasswords()" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Name is too long</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Password</label>
+                    <input type="password" name="password" ng-model="ctrl.password" placeholder="Password" required md-maxlength="16" />
+                    <div ng-messages="Form.password.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Please enter your password.</div>
+                        <div ng-message="md-maxlength" class="my-message">Too long.</div>
+                    </div>
+                </md-input-container>
+                <md-input-container class="md-block">
+                    <label>Repeat password</label>
+                    <input type="password" name="repeatpassword" ng-model="ctrl.repeatpassword" on-placeholder="Repeat password" required md-maxlength="16" pwd-checker="ctrl.password"/>
+                    <div ng-messages="Form.password.$error" ng-if="ng-show="Form.$error" role="alert" multiple="">
+                        <div ng-message="required" class="my-message">Passwords aren't equal</div>
+                    </div>
+                </md-input-container>
+                <md-button ng-disabled="!Form.$valid" ng-click="ctrl.createAccount()" class="md-raised md-primary">Create account</md-button>
+            </form>
+        </md-card-content>
+    </md-card>
+</md-content>
