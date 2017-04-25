@@ -34,7 +34,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             url: "/home",
             title: 'Home',
             orderNumber: 1,
-            adminRoleRequired: false,
             loginRequired: false,
             views: {
                 'header': header,
@@ -49,7 +48,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             url: '/login',
             title: "Login",
             orderNumber: 2,
-            adminRoleRequired: false,
             loginRequired: false,
             views: {
                 'header': header,
@@ -63,7 +61,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
         .state('signUp', {
             url: "/register",
             title: "Sign up",
-            adminRoleRequired: false,
             loginRequired: false,
             views: {
                 'header': header,
@@ -78,7 +75,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             url: '/logout',
             title: "Logout",
             orderNumber: 3,
-            adminRoleRequired: false,
             loginRequired: true,
             views: {
                 'header': header,
@@ -93,7 +89,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
             url: '/about',
             title: 'About',
             orderNumber: 4,
-            adminRoleRequired: false,
             loginRequired: false,
             views: {
                 'header': header,

@@ -29,7 +29,6 @@ export default ($stateProvider) => {
         .state('user', {
             abstract: true,
             url: '/user',
-            adminRoleRequired: false,
             loginRequired: true,
             views: {
                 'header': header,
@@ -41,7 +40,6 @@ export default ($stateProvider) => {
         .state('user.allTransactions', {
             url: '/transactions',
             title: 'Transactions',
-            adminRoleRequired: false,
             loginRequired: true,
             template: transactionsTmpl,
             controller: transactionListController,
@@ -51,16 +49,14 @@ export default ($stateProvider) => {
             url: '/transaction',
             title: 'New transaction',
             loginRequired: true,
-            adminRoleRequired: false,
             template: newTransactionTmpl,
             controller: transactionListController,
-            controllerAs: 'contr'
+            controllerAs: 'ctrl'
         })
         .state('user.allCategories', {
             url: '/categories',
             title: 'Categories',
             loginRequired: true,
-            adminRoleRequired: false,
             template: categoriesTmpl,
             controller: categoryController,
             controllerAs: 'ctrl'
@@ -69,7 +65,6 @@ export default ($stateProvider) => {
             url: '/category',
             title: 'Add new category',
             loginRequired: true,
-            adminRoleRequired: false,
             template: newCategoryTmpl,
             controller: categoryController,
             controllerAs: 'ctrl'

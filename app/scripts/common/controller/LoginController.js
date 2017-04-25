@@ -22,8 +22,6 @@ export default class LoginController {
     userLogin() {
         "use strict";
 
-        this.login = "user1";
-        this.pass = "user1";
         let user = this.userService.userLogin(this.login, this.pass);
         this.login = '';
         this.pass = '';
@@ -31,11 +29,7 @@ export default class LoginController {
         if (!user) {
             this.$state.go('login'); //todo add error on logging in
         } else {
-            if (this.userService.isAdmin(user)) {
-                this.$state.go('admin.allUsers');
-            } else {
-                this.$state.go('user.allTransactions');
-            }
+            this.$state.go('user.allTransactions');
         }
     }
 }

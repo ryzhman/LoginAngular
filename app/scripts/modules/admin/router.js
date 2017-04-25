@@ -25,7 +25,6 @@ export default ($stateProvider) => {
         .state('admin', {
             abstract: true,
             url: '/admin',
-            adminRoleRequired: true,
             loginRequired: true,
             views: {
                 'header': header,
@@ -46,7 +45,6 @@ export default ($stateProvider) => {
             url: '/users',
             title: 'Users list',
             orderNumber: 2,
-            adminRoleRequired: true,
             loginRequired: true,
             template: usersTmpl,
             controller: usersListController,
@@ -61,7 +59,6 @@ export default ($stateProvider) => {
             url: '/addNewUser',
             title: 'Add new user',
             orderNumber: 3,
-            adminRoleRequired: true,
             loginRequired: true,
             template: addNewUserTmpl,
             controller: addNewUserController,

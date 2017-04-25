@@ -39,17 +39,10 @@ export default class UserService {
         "use strict";
 
         let user = this.getUser(email);
-        if (user && user.password === password) {
+        if (user && user.password === pass) {
             this.loggedInUser = user;
-            this.setLastLoginDate(this.loggedInUser);
             return user;
         }
-    }
-
-    setLastLoginDate(user) {
-        "use strict";
-
-        user.lastLogin = this.$filter('date')(new Date(), 'medium');
     }
 
     getLoggedInUser() {
@@ -58,10 +51,11 @@ export default class UserService {
         return this.loggedInUser;
     }
 
+
     getUser(email) {
         "use strict";
 
-        let allUsers = this.$window.localStorage.getItem('users');
+        let allUsers = angular.fromJson(this.$window.localStorage.getItem('users'));
         for (let i = 0; i < allUsers.length; i++) {
             if (allUsers[i].email === email) { //todo change to filter
                 return allUsers[i];
@@ -74,14 +68,12 @@ export default class UserService {
         "use strict";
 
         let users = this.getUsers();
-        console.log(users);
         users.push(newUser);
-        this.storeUsers(users);
+        this.storeUsers(angular.toJson(users));
     }
 
     getUsers() {
         "use strict";
-        console.log(angular.fromJson(this.$window.localStorage.getItem('users')));
         return angular.fromJson(this.$window.localStorage.getItem('users'));
     }
 
