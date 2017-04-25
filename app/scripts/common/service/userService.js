@@ -2,45 +2,48 @@
  * Created by Олександр on 25.02.2017.
  */
 export default class UserService {
-    constructor($filter) {
+    constructor($filter, $window) {
         "use strict";
 
         "ngInject";
 
-        this.userList = this.users = [{
-            name: "admin",
-            pass: "admin",
-            group: "admins"
-        }, {
-            name: "user1",
-            pass: "user1",
-            group: "users"
-        }];
         this.loggedInUser = null;
         this.$filter = $filter;
+        this.$window = $window;
+        this._init();
     }
 
-    userLogin(name, pass) {
+    _init() {
+        'use strict';
+        let userList = this.users = [{
+            email: "admin@gmail.com",
+            name: "admin",
+            password: "admin",
+        }, {
+            email: "user@gmail.com",
+            name: "user",
+            password: "user"
+        }];
+        let users = [];
+        userList.forEach(item =>
+            users.push({
+                "email": item.email,
+                "name": item.name,
+                "password": item.password
+            })
+        );
+        this.$window.localStorage.setItem("users", angular.toJson(users));
+    }
+
+    userLogin(email, pass) {
         "use strict";
 
-        let user = this.getUser(name);
-        if (user && user.pass === pass) {
+        let user = this.getUser(email);
+        if (user && user.password === password) {
             this.loggedInUser = user;
             this.setLastLoginDate(this.loggedInUser);
             return user;
         }
-    }
-
-    isAdmin(user) {
-        "use strict";
-
-        return user.group === 'admins';
-    }
-
-    isLoggedInUserAdmin() {
-        "use strict";
-
-        return this.loggedInUser.group === 'admins';
     }
 
     setLastLoginDate(user) {
@@ -55,12 +58,13 @@ export default class UserService {
         return this.loggedInUser;
     }
 
-    getUser(name) {
+    getUser(email) {
         "use strict";
 
-        for (let i = 0; i < this.userList.length; i++) {
-            if (this.userList[i].name === name) {
-                return this.userList[i];
+        let allUsers = this.$window.localStorage.getItem('users');
+        for (let i = 0; i < allUsers.length; i++) {
+            if (allUsers[i].email === email) { //todo change to filter
+                return allUsers[i];
             }
         }
     }
@@ -70,19 +74,20 @@ export default class UserService {
         "use strict";
 
         let users = this.getUsers();
+        console.log(users);
         users.push(newUser);
-    }
-
-    addNewUser(newUser) {
-        "use strict";
-
-        this.userList.push(newUser);
+        this.storeUsers(users);
     }
 
     getUsers() {
         "use strict";
+        console.log(angular.fromJson(this.$window.localStorage.getItem('users')));
+        return angular.fromJson(this.$window.localStorage.getItem('users'));
+    }
 
-        return this.userList;
+    storeUsers(usersArr) {
+        "use strict";
+        this.$window.localStorage.setItem('users', usersArr);
     }
 
 }
