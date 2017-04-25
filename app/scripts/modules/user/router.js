@@ -4,7 +4,6 @@
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
 import categoryController from "./controller/categoryController";
-// import newTransactionController from "./controller/newTransactionCtrl";
 // import newCategoryController from "./controller/newTransactionCtrl";
 
 import userMainTmpl from "./views/user.html";

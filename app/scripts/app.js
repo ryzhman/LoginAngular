@@ -5,7 +5,6 @@ import ngMaterial from "angular-material";
 import ngAnimate from "angular-animate";
 import ngAria from "angular-aria";
 import commonRouter from "./common/config/commonRouter";
-import adminModule from "./modules/admin/app";
 import userModule from "./modules/user/app";
 
 import userService from "./common/service/userService";
@@ -18,7 +17,6 @@ angular.module('app', [
         ngAnimate,
         ngAria,
         userModule.name,
-        adminModule.name,
     ])
     .config(commonRouter)
     .service('userService', userService)

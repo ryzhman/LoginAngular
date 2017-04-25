@@ -40,7 +40,7 @@ export default class UserService {
 
         let user = this.getUser(email);
         if (user && user.password === pass) {
-            this.loggedInUser = user;
+            this.loggedInUser = user.email;
             return user;
         }
     }

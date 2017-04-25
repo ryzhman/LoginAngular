@@ -11,13 +11,22 @@ export default class TransactionListController {
         this.transactionService = transactionService;
     }
 
+    _checkUser(){
+        console.log(this.transactionService);
+        // console.log(this.transactionService.getLoggedInUser());
+        if(!this.transactionService.getLoggedInUser()){
+            this.$state.go('home');
+        }
+    }
 
     addNewTransaction() {
+        this._checkUser()
         this.transactionService.addNewTransaction(this.date, this.category, this.description, this.sum);
         this.backToTransactionsList();
     }
 
     getAllTransactions() {
+        this._checkUser()
         return this.transactionService.getAllTransactions();
         //TODO change to call BE 
     }

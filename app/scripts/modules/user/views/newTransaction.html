@@ -1,17 +1,11 @@
 <div class="container-fluid container">
     <h4>To create a new transaction add appropriate info here</h4>
     <!-- <form ng-submit="ctrl.addNewTransaction()" class="form-horizontal" role="form" autocomplete="off"> -->
-    <form ng-submit="contr.addNewTransaction()" autocomplete="off"><!-- class="col s12" --> 
-        <!-- div class="form-group">
-            <div class="row">
-                <label>Transaction date</label>
-                <input type="date" class="datepicker" ng-model="ctrl.date">
-            </div>
-        </div> -->
+    <form ng-submit="ctrl.addNewTransaction()" autocomplete="off"><!-- class="col s12" --> 
         <div layout-gt-xs="row">
         <div flex-gt-xs>
-            <!-- <label for="sum" class="col-sm-2 control-label">Transaction date</label> -->
-            <md-datepicker ng-model="contr.date" md-placeholder="Enter date"></md-datepicker>
+            <label for="sum" class="col-sm-2 control-label">Transaction date</label>
+            <md-datepicker ng-model="ctrl.date" md-placeholder="Enter date"></md-datepicker>
         </div>
         </div>
         <div class="row">
@@ -31,15 +25,15 @@
             <div class="col-sm-4">
                 <select id="category" name="group" ng-model="ctrl.category" required>
                     <optgroup label="Daily spendings">
-                        <option value="1">Grocaries</option>
-                        <option value="2">Restaurants</option>
-                        <option value="3">Commuting</option>
+                        <option value="Grocaries">Grocaries</option>
+                        <option value="Restaurants">Restaurants</option>
+                        <option value="Commuting">Commuting</option>
                     </optgroup>
                     <optgroup label="Monthly spendings">
-                        <option value="4">Payment fro house maintanence</option>
-                        <option value="5">Electricity</option>
-                        <option value="6">Gas</option>
-                        <option value="6">Heating</option>
+                        <option value="Payment for house maintanence">Payment for house maintanence</option>
+                        <option value="Electricity">Electricity</option>
+                        <option value="Gas">Gas</option>
+                        <option value="Heating">Heating</option>
                     </optgroup>
                     <optgroup label="Quarterly spendings">
                         <option value="4">Brinjal</option>
