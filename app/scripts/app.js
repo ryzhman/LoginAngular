@@ -13,6 +13,7 @@ import userModule from "./modules/user/app";
 import userService from "./common/service/userService";
 import pwdChecker from "./common/utils/pwdChecker";
 
+'use strict';
 angular.module('app', [
         uiRouter,
         angularMaterialDataTable,
@@ -20,13 +21,12 @@ angular.module('app', [
         ngMaterial,
         ngAnimate,
         ngAria,
-        userModule.name,
+        userModule.name
     ])
     .config(commonRouter)
     .service('userService', userService)
     .directive('pwdChecker', pwdChecker)
     .run(($rootScope) => {
-        'use strict';
         "ngInject";
         $rootScope.$on('$stateChangeSuccess', (event, toState) => {
             $rootScope.pageTitle = toState.title;

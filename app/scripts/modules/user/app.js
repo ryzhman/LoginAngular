@@ -5,10 +5,12 @@ import angular from "angular";
 // import ngStorage from "angular-local-storage";
 import commonRouter from "./router";
 import transactionService from "./service/transactionService";
+import categoryService from "./service/categoryService";
 
 let userModule = angular.module('app.userModule', []);
 userModule
 .config(commonRouter)
-.service('transactionService', transactionService);
+.service('transactionService', transactionService)
+.service('categoryService', categoryService);
 
 export default userModule;

@@ -13,8 +13,8 @@ export default class NewTransactionController {
     }
 
     addNewTransaction() {
-        console.log("addNewTransaction");
-        this.transactionService.addNewTransaction(this.date, this.category, this.description, this.sum);
+        let id = this.sum + "" + new Date().getMinutes() + "" + new Date().getHours();
+        this.transactionService.addNewTransaction(id, this.date, this.category, this.description, this.sum);
         this.backToTransactionsList();
         this.$state.go('user.allTransactions');
     }

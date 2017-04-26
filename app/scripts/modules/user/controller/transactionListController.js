@@ -4,16 +4,17 @@
 
 "use strict";
 export default class TransactionListController {
-    constructor($state, $scope, userService, user, transactionService) {
+    constructor($state, $filter, userService, user, transactionService, categoryService) {
         "ngInject";
 
         this.$state = $state;
         this.userService = userService;
         this.transactionService = transactionService;
-        this.transactions = this.getAllTransactions();
-        this.transactionInEdit = false;
-        this.currentTransaction = {};
+        this.categoryService = categoryService;
 
+        this.transactions = this.getAllTransactions();
+        this.$filter = $filter;
+        this.updated = {};
     }
 
     getAllTransactions() {
@@ -21,21 +22,30 @@ export default class TransactionListController {
         //TODO change to call BE 
     }
 
-    edit(transaction) {
-        this.transactionInEdit = true;
-        this.currentTransaction = transaction;
-        
+    editTransaction(dataForUpdate, transaction) {
+        this.updated = transaction;
+        this.transactionService.updateTransaction(transaction, dataForUpdate);
+    }
 
+    removeTransaction(transaction) {
         this.transactionService.updateTransaction(transaction);
     }
 
-    getTotalExpenses(){
+    showCategory(transaction) {
+        let selected = [];
+        if (transaction.category) {
+            selected = this.$filter('filter')(this.categoryService.getCategories(), { title: transaction.category });
+        }
+        return selected.length ? selected[0].title : 'Not set';
+    }
+
+    getTotalExpenses() {
         let allTransacion = this.getAllTransactions();
         let totalExpenses = 0;
         allTransacion.forEach(transaction => {
             totalExpenses += +transaction.sum;
         });
-        return totalExpenses; 
+        return totalExpenses;
     }
 
     backToTransactionsList() {
@@ -46,4 +56,7 @@ export default class TransactionListController {
         this.$state.go("user.allTransactions");
     }
 
+    loadCategories() {
+        return this.categoryService.getCategories();
+    }
 }

@@ -7,49 +7,50 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>Total sum</th>
-                <th></th>
+                <th>Edit</th>
             </thead>
             <tbody>
                 <tr ng-repeat="transaction in ctrl.transactions track by $index">
                     <td>{{$index+1}}</td>
                     <td>
-                        <!-- editable username (text with validation) -->
                         <span editable-text="transaction.date" e-name="date" e-form="rowform">
-                            {{ transaction.date || 'empty' }}
+                            {{ (transaction.date | date:'dd.MM.yyyy') || 'n/a' }}
                          </span>
                     </td>
                     <td>
-                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
-                            {{ transaction.category || 'empty' }}
+                        <span editable-text="transaction.category" e-name="category" e-form="rowform" > <!-- e-ng-options="cat.value as cat.title for cat in ctrl.loadCategories()" -->
+                            {{ctrl.showCategory(transaction)}}
                          </span>
                     </td>
                     <td>
-                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
-                            {{ transaction.description || 'empty' }}
+                        <span editable-text="transaction.description" e-name="description" e-form="rowform">
+                            {{ transaction.description || 'n/a' }}
                          </span>
                     </td>
                     <td>
-                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
-                            {{ transaction.sum || 'empty' }}
+                        <span editable-text="transaction.sum" e-name="sum" e-form="rowform">
+                            {{ transaction.sum }}
                          </span>
                     </td>
-                    <!--  <td>
-                        <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">edit</i>
-                            <md-icon>
-                    </td> -->
-                    <td style="white-space: nowrap">
+                    <td>
                         <!-- form -->
-                        <form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
-                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                        <form editable-form name="rowform" onbeforesave="ctrl.editTransaction($data, transaction)" ng-show="rowform.$visible" shown="ctrl.updated == transaction">
+                            <md-button type="submit" ng-disabled="rowform.$waiting">
                                 save
-                            </button>
-                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                            </md-button>
+                            <md-button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()">
                                 cancel
-                            </button>
+                            </md-button>
                         </form>
                         <div class="buttons" ng-show="!rowform.$visible">
-                            <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
-                            <button type="button" class="btn btn-danger" ng-click="removeUser($index)">del</button>
+                            <md-button class="md-primary" type="button" class="btn btn-primary" ng-click="rowform.$show()">
+                                <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">edit</i>
+                                    <md-icon>
+                            </md-button>
+                            <md-button class="md-primary" type="button" class="btn btn-danger" ng-click="removeUser($index)">
+                                <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">delete</i>
+                                </md-icon>
+                            </md-button>
                         </div>
                     </td>
                 </tr>

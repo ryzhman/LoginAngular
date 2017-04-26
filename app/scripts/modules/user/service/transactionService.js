@@ -4,31 +4,53 @@
 
 "use strict";
 export default class TransactionService {
-    constructor($filter, $window, userService) {
+    constructor($filter, $window, userService, categoryService) {
         "ngInject";
 
         this.$filter = $filter;
         this.userService = userService;
         this.localStorage = $window.localStorage;
+        this.categoryService = categoryService;
     }
 
-    addNewTransaction(date, category, description, sum) {
+    addNewTransaction(id, date, category, description, sum) {
         let currentUser = this.userService.getLoggedInUser();
         let transaction = {
+            id: id,
             date: date,
             category: category,
             description: description,
             sum: sum
         };
-        this._addTransaction(currentUser, transaction);
+        this._storeTransaction(currentUser, transaction);
 
         return this.transactionsArr;
     }
 
-    _addTransaction(user, transaction) {
+    _storeTransaction(user, transaction) {
         let currentArr = this.getAllTransactions();
         currentArr.push(transaction);
         this.localStorage.setItem("transaction_" + user, angular.toJson(currentArr));
+    }
+
+    _storeTransactions(user, transactions) {
+        this.localStorage.removeItem("transaction_" + user);
+        this.localStorage.setItem("transaction_" + user, angular.toJson(transactions));
+    }
+
+    _replaceTransaction(transaction, dataForUpdate) {
+        let currentArr = this.getAllTransactions();
+        currentArr.forEach(elem => {
+            if (elem.id === transaction.id) {
+                for (let i = 0; i < Object.keys(transaction).length; i++) {
+                    let key = Object.keys(transaction)[i];
+                    if (key !== 'id') {
+                        elem[key] = dataForUpdate[key];
+                    }
+                }
+            }
+        });
+        this._storeTransactions(this.userService.getLoggedInUser(), currentArr);
     }
 
     getAllTransactions() {
@@ -44,10 +66,7 @@ export default class TransactionService {
         return transactionsArr;
     }
 
-    updateTransaction(transaction){
-        this.currentTransaction = transaction;
-        
-        // this.getAllTransactions().filter
-
+    updateTransaction(transaction, dataForUpdate) {
+        this._replaceTransaction(transaction, dataForUpdate);
     }
 }
