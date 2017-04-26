@@ -13,20 +13,6 @@ export default class TransactionService {
         this.categoryService = categoryService;
     }
 
-    addNewTransaction(id, date, category, description, sum) {
-        let currentUser = this.userService.getLoggedInUser();
-        let transaction = {
-            id: id,
-            date: date,
-            category: category,
-            description: description,
-            sum: sum
-        };
-        this._storeTransaction(currentUser, transaction);
-
-        return this.transactionsArr;
-    }
-
     _storeTransaction(user, transaction) {
         let currentArr = this.getAllTransactions();
         currentArr.push(transaction);
@@ -39,8 +25,8 @@ export default class TransactionService {
     }
 
     _replaceTransaction(transaction, dataForUpdate) {
-        let currentArr = this.getAllTransactions();
-        currentArr.forEach(elem => {
+        let updatedArr = this.getAllTransactions();
+        updatedArr.forEach(elem => {
             if (elem.id === transaction.id) {
                 for (let i = 0; i < Object.keys(transaction).length; i++) {
                     let key = Object.keys(transaction)[i];
@@ -50,7 +36,31 @@ export default class TransactionService {
                 }
             }
         });
-        this._storeTransactions(this.userService.getLoggedInUser(), currentArr);
+        this._storeTransactions(this.userService.getLoggedInUser(), updatedArr);
+    }
+
+    _deleteTransaction(transaction) {
+        let updatedArr = this.getAllTransactions();
+        updatedArr.forEach(elem => {
+            if (elem.id === transaction.id) {
+                let indexOfElemToRemove = updatedArr.indexOf(elem);
+                updatedArr.splice(indexOfElemToRemove, 1);
+            }
+        });
+        this._storeTransactions(this.userService.getLoggedInUser(), updatedArr);
+    }
+
+    addNewTransaction(id, date, category, description, sum) {
+        let currentUser = this.userService.getLoggedInUser();
+        let transaction = {
+            id: id,
+            date: date,
+            category: category,
+            description: description,
+            sum: sum
+        };
+        this._storeTransaction(currentUser, transaction);
+        return this.transactionsArr;
     }
 
     getAllTransactions() {
@@ -68,5 +78,9 @@ export default class TransactionService {
 
     updateTransaction(transaction, dataForUpdate) {
         this._replaceTransaction(transaction, dataForUpdate);
+    }
+
+    deleteTransaction(transaction){
+        this._deleteTransaction(transaction);
     }
 }

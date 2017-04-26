@@ -25,10 +25,12 @@ export default class TransactionListController {
     editTransaction(dataForUpdate, transaction) {
         this.updated = transaction;
         this.transactionService.updateTransaction(transaction, dataForUpdate);
+        this.transactions = this.getAllTransactions();
     }
 
-    removeTransaction(transaction) {
-        this.transactionService.updateTransaction(transaction);
+    deleteTransaction(transaction) {
+        this.transactionService.deleteTransaction(transaction);
+        this.transactions = this.getAllTransactions();
     }
 
     showCategory(transaction) {
@@ -36,7 +38,7 @@ export default class TransactionListController {
         if (transaction.category) {
             selected = this.$filter('filter')(this.categoryService.getCategories(), { title: transaction.category });
         }
-        return selected.length ? selected[0].title : 'Not set';
+        return selected.length ? selected[0].title : 'n/a';
     }
 
     getTotalExpenses() {
