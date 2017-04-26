@@ -35,6 +35,8 @@ module.exports = {
         root: path.join(__dirname, 'app')
     },
     devServer: {
-        port: 8080
+        port: 8080 //webpack copy plugin image minplugin
+
+        //dev-tool source map - map
     }
 };

@@ -2,33 +2,31 @@
  * Created by Олександр on 25.02.2017.
  */
 
+"use strict";
 export default class TransactionService {
     constructor($filter, $window, userService) {
-        "use strict";
         "ngInject";
 
         this.$filter = $filter;
         this.userService = userService;
-        this.storage = $window.storage;
+        this.localStorage = $window.localStorage;
     }
 
     addNewTransaction(date, category, description, sum) {
-        let currentUser = this.userService.loggedInUser;
+        let currentUser = this.userService.getLoggedInUser();
         let transaction = {
             date: date,
             category: category,
             description: description,
             sum: sum
         };
-        console.log(transaction, currentUser);
-
         this._addTransaction(currentUser, transaction);
 
         return this.transactionsArr;
     }
 
     _addTransaction(user, transaction) {
-        this.storage.setItem("transaction_" + currentUser, angular.toJson(transaction));
+        this.localStorage.setItem("transaction_" + user, angular.toJson(transaction));
     }
 
     getAllTransactions() {
@@ -36,14 +34,10 @@ export default class TransactionService {
         let currentUser = this.userService.loggedInUser;
         let transactionsArr = [];
         let transactionKey = "transaction_" + currentUser;
-        console.log(transactionKey);
-        console.log(this.storage.length);
-        for (let i = 0; i < this.storage.length; i++) {
-            console.log(this.storage.key(i));
-            if (transactionKey.indexOf(this.storage.key(i)) !== 0) {
-                transactionsArr = this.storage.getItem(transactionKey);
-                break;
-            }
+        if (this.localStorage.getItem(transactionKey)) {
+            transactionsArr = angular.fromJson(this.localStorage.getItem(transactionKey));
+        } else {
+            transactionsArr = [];
         }
         return this.transactionsArr;
     }

@@ -4,7 +4,6 @@
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
 import categoryController from "./controller/categoryController";
-// import newCategoryController from "./controller/newTransactionCtrl";
 
 import userMainTmpl from "./views/user.html";
 import transactionsTmpl from "./views/transactions.html";
@@ -34,6 +33,24 @@ export default ($stateProvider) => {
                 '': {
                     template: userMainTmpl,
                 }
+            },
+            resolve: {
+                user: (userService, $state, $q, $timeout) => {
+                    // return userService.getCurrentUser();
+
+                    let user = userService.getLoggedInUser();
+
+                    let deffered = $q.defer();
+                    if (user) {
+                        deffered.resolve(user); //
+                    } else {
+                        $timeout(() => { //hack to place this transtion to the end of stack (will be executed after initial transition is finished)
+                            $state.go('login');
+                        });
+                        deffered.resolve(null);
+                    }
+                    return deffered.promise;
+                }
             }
         })
         .state('user.allTransactions', {
@@ -49,7 +66,7 @@ export default ($stateProvider) => {
             title: 'New transaction',
             loginRequired: true,
             template: newTransactionTmpl,
-            controller: transactionListController,
+            controller: transactionListController, //each state - controller
             controllerAs: 'ctrl'
         })
         .state('user.allCategories', {
@@ -65,7 +82,7 @@ export default ($stateProvider) => {
             title: 'Add new category',
             loginRequired: true,
             template: newCategoryTmpl,
-            controller: categoryController,
+            controller: categoryController, //each state - controller
             controllerAs: 'ctrl'
         });
 };

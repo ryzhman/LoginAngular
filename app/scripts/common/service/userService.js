@@ -1,10 +1,9 @@
 /**
  * Created by Олександр on 25.02.2017.
  */
+"use strict";
 export default class UserService {
     constructor($filter, $window) {
-        "use strict";
-
         "ngInject";
 
         this.loggedInUser = null;
@@ -14,7 +13,6 @@ export default class UserService {
     }
 
     _init() {
-        'use strict';
         let userList = this.users = [{
             email: "admin@gmail.com",
             name: "admin",
@@ -36,25 +34,42 @@ export default class UserService {
     }
 
     userLogin(email, pass) {
-        "use strict";
-
         let user = this.getUser(email);
         if (user && user.password === pass) {
-            this.loggedInUser = user.email;
+            // this.loggedInUser = user.email;
+            this._storeCurrentUser(this.loggedInUser);
             return user;
         }
     }
 
-    getLoggedInUser() {
-        "use strict";
-
-        return this.loggedInUser;
+    userLogout(){
+        console.log(this.getLoggedInUser());
+        this.$window.localStorage.removeItem('currentUser');
+        this.loggedInUser = null;
     }
+
+    _storeCurrentUser(user) {
+        this.$window.localStorage.setItem('currentUser', user);
+    }
+
+    getLoggedInUser() {
+        return this.$window.localStorage.getItem('currentUser');
+    }
+
+    // for user router
+    /*getCurrentUser() {
+        "use strict";
+        let deffered = $q.defer();
+        if (this.loggedInUser) {
+            deffered.resolve(this.loggedInUser);
+        } else {
+            deffered.reject(null);
+        }
+        return deffered.promise;
+    }*/
 
 
     getUser(email) {
-        "use strict";
-
         let allUsers = angular.fromJson(this.$window.localStorage.getItem('users'));
         for (let i = 0; i < allUsers.length; i++) {
             if (allUsers[i].email === email) { //todo change to filter
@@ -65,20 +80,16 @@ export default class UserService {
 
     //either update or create new
     addUser(newUser) {
-        "use strict";
-
         let users = this.getUsers();
         users.push(newUser);
         this.storeUsers(angular.toJson(users));
     }
 
     getUsers() {
-        "use strict";
         return angular.fromJson(this.$window.localStorage.getItem('users'));
     }
 
     storeUsers(usersArr) {
-        "use strict";
         this.$window.localStorage.setItem('users', usersArr);
     }
 

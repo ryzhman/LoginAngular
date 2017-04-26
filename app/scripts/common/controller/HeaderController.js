@@ -2,9 +2,9 @@
  * Created by Олександр on 25.02.2017.
  */
 
+"use strict";
 export default class HeaderController {
     constructor($state, userService, $sce, $mdSidenav) {
-        "use strict";
 
         "ngInject";
 
@@ -12,6 +12,7 @@ export default class HeaderController {
         this.allStates = $state.get();
 
         this.loggedInUser = userService.getLoggedInUser();
+        console.log(this.loggedInUser);
 
         this.loginRegisterStates = this.allStates.filter((state) => {
             if (userService.getLoggedInUser() === null) {
@@ -22,6 +23,8 @@ export default class HeaderController {
         });
 
         this.explicitlyTrustedHtml = $sce.trustAsHtml();
+        this.userService = userService;
+        this.$state = $state;
     }
 
     getState(stateName) {
@@ -29,6 +32,11 @@ export default class HeaderController {
             return state.title === stateName;
         });
         return states[0];
+    }
+
+    logout() {
+        this.userService.userLogout();
+        this.$state.go('home');
     }
 
 

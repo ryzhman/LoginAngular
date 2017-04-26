@@ -5,11 +5,9 @@ import headerController from "../controller/HeaderController";
 import homeController from "../controller/HomeConroller";
 import aboutController from "../controller/AboutController";
 import loginController from "../controller/LoginController";
-import logoutController from "../controller/LogoutController";
 import signUpController from "../controller/signUpController";
 
 import headerTmpl from "../../../views/common/header.html";
-import logoutTmpl from '../../../views/common/logout.html';
 import loginTmpl from '../../../views/common/login.html';
 import homeTmpl from '../../../views/user/home.html';
 import aboutTmpl from '../../../views/common/about.html';
@@ -70,20 +68,6 @@ export default ($stateProvider, $locationProvider, $urlRouterProvider) => {
                     controllerAs: 'ctrl'
                 }
             }
-        })
-        .state('logout', {
-            url: '/logout',
-            title: "Logout",
-            orderNumber: 3,
-            loginRequired: true,
-            views: {
-                'header': header,
-                '': {
-                    template: logoutTmpl,
-                    controller: logoutController,
-                    controllerAs: 'ctrl'
-                }
-            },
         })
         .state("about", {
             url: '/about',

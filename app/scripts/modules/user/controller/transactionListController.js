@@ -2,31 +2,30 @@
  * Created by Олександр on 26.02.2017.
  */
 
+"use strict";
 export default class TransactionListController {
-    constructor($state, $scope, $rootScope, $localStorage, $sessionStorage, transactionService) {
-        "use strict";
+    constructor($state, $scope, userService, user, transactionService) {
         "ngInject";
 
         this.$state = $state;
+        this.userService = userService;
         this.transactionService = transactionService;
     }
 
-    _checkUser(){
-        console.log(this.transactionService);
-        // console.log(this.transactionService.getLoggedInUser());
-        if(!this.transactionService.getLoggedInUser()){
+    _checkUser() {
+        if (!this.userService.getLoggedInUser()) {
             this.$state.go('home');
         }
     }
 
     addNewTransaction() {
-        this._checkUser()
+        this._checkUser();
         this.transactionService.addNewTransaction(this.date, this.category, this.description, this.sum);
         this.backToTransactionsList();
     }
 
     getAllTransactions() {
-        this._checkUser()
+        // this._checkUser()
         return this.transactionService.getAllTransactions();
         //TODO change to call BE 
     }
