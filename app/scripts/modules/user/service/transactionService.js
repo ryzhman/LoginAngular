@@ -43,4 +43,11 @@ export default class TransactionService {
         }
         return transactionsArr;
     }
+
+    updateTransaction(transaction){
+        this.currentTransaction = transaction;
+        
+        // this.getAllTransactions().filter
+
+    }
 }

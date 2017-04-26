@@ -4,6 +4,9 @@ import ngStorage from "ngStorage";
 import ngMaterial from "angular-material";
 import ngAnimate from "angular-animate";
 import ngAria from "angular-aria";
+import xeditable from "angular-xeditable";
+import angularMaterialDataTable from "angular-material-data-table";
+
 import commonRouter from "./common/config/commonRouter";
 import userModule from "./modules/user/app";
 
@@ -12,7 +15,8 @@ import pwdChecker from "./common/utils/pwdChecker";
 
 angular.module('app', [
         uiRouter,
-        'ngStorage',
+        angularMaterialDataTable,
+        "xeditable",
         ngMaterial,
         ngAnimate,
         ngAria,

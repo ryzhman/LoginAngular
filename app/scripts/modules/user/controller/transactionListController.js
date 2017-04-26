@@ -11,22 +11,31 @@ export default class TransactionListController {
         this.userService = userService;
         this.transactionService = transactionService;
         this.transactions = this.getAllTransactions();
+        this.transactionInEdit = false;
+        this.currentTransaction = {};
+
     }
 
-    // _checkUser() {
-    //     if (!this.userService.getLoggedInUser()) {
-    //         this.$state.go('home');
-    //     }
-    // }
-
     getAllTransactions() {
-        // this._checkUser()
         return this.transactionService.getAllTransactions();
         //TODO change to call BE 
     }
 
-    editTransaction(transactionId) {
+    edit(transaction) {
+        this.transactionInEdit = true;
+        this.currentTransaction = transaction;
+        
 
+        this.transactionService.updateTransaction(transaction);
+    }
+
+    getTotalExpenses(){
+        let allTransacion = this.getAllTransactions();
+        let totalExpenses = 0;
+        allTransacion.forEach(transaction => {
+            totalExpenses += +transaction.sum;
+        });
+        return totalExpenses; 
     }
 
     backToTransactionsList() {

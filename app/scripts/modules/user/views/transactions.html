@@ -7,22 +7,88 @@
                 <th>Category</th>
                 <th>Description</th>
                 <th>Total sum</th>
+                <th></th>
             </thead>
             <tbody>
                 <tr ng-repeat="transaction in ctrl.transactions track by $index">
-                {{transaction | json}}
                     <td>{{$index+1}}</td>
-                    <td>{{transaction.date | date:'dd/MM/yyyy'}}</td>
-                    <td>{{transaction.category}}</td>
-                    <td>{{transaction.description}}</td>
-                    <td>{{transaction.sum}}</td>
+                    <td>
+                        <!-- editable username (text with validation) -->
+                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
+                            {{ transaction.date || 'empty' }}
+                         </span>
+                    </td>
+                    <td>
+                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
+                            {{ transaction.category || 'empty' }}
+                         </span>
+                    </td>
+                    <td>
+                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
+                            {{ transaction.description || 'empty' }}
+                         </span>
+                    </td>
+                    <td>
+                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
+                            {{ transaction.sum || 'empty' }}
+                         </span>
+                    </td>
+                    <!--  <td>
+                        <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">edit</i>
+                            <md-icon>
+                    </td> -->
+                    <td style="white-space: nowrap">
+                        <!-- form -->
+                        <form editable-form name="rowform" onbeforesave="saveUser($data, user.id)" ng-show="rowform.$visible" class="form-buttons form-inline" shown="inserted == user">
+                            <button type="submit" ng-disabled="rowform.$waiting" class="btn btn-primary">
+                                save
+                            </button>
+                            <button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()" class="btn btn-default">
+                                cancel
+                            </button>
+                        </form>
+                        <div class="buttons" ng-show="!rowform.$visible">
+                            <button type="button" class="btn btn-primary" ng-click="rowform.$show()">edit</button>
+                            <button type="button" class="btn btn-danger" ng-click="removeUser($index)">del</button>
+                        </div>
+                    </td>
                 </tr>
             </tbody>
+            <tfoot>
+                <tr>
+                    <th colspan="4">Total expenses</th>
+                    <th>{{ctrl.getTotalExpenses()}}</th>
+                </tr>
+            </tfoot>
         </table>
     </div>
     <div class="row">
-        <div class="col-xs-12">
-            <md-button class="md-primary" md-nav-sref="user.newTransaction">Add new transaction</md-button>
-        </div>
+        <md-button class="md-primary" ui-sref="user.newTransaction">Add new transaction</md-button>
+    </div>
     </div>
 </md-content>
+<!-- 
+            <thead md-head>
+                <th md-column>#</th>
+                <th md-column>Date</th>
+                <th md-column>Category</th>
+                <th md-column>Description</th>
+                <th md-column>Total sum</th>
+            </thead>
+            <tbody md-body>
+                <tr md-row md-select="transaction" md-select-id="name" md-auto-select ng-repeat="transaction in ctrl.transactions track by $index">
+                    <td md-cell>{{$index+1}}</td>
+                    <td md-cell>{{transaction.date | date:'dd/MM/yyyy'}}</td>
+                    <td md-cell>{{transaction.category}}</td>
+                    <td md-cell>{{transaction.description}}</td>
+                    <td md-cell>{{transaction.sum}}</td>
+                </tr>
+            </tbody>
+            <tfoot md-foot>
+                <tr md-row>
+                    <th md-column colspan="4"><strong>Total expenses</strong></th>
+                    <th md-column>{{ctrl.getTotalExpenses()}}</th>
+                </tr>
+            </tfoot>
+        </table>
+ -->
