@@ -5,7 +5,7 @@ body {
     padding-left: 60px;
 }
 
-p {
+/*p {
     line-height: 2rem;
 }
 
@@ -17,7 +17,7 @@ $gray: #eee;
 
 md-content.md-default-theme {
   background-color: $gray;
-}
+}*/
 md-card {
   background-color: #fff;
   h2:first-of-type {
@@ -32,16 +32,16 @@ md-toolbar {
 h2 {
   font-weight: 400;
 }
-.md-toolbar-tools-bottom {
+/*.md-toolbar-tools-bottom {
   font-size: small;
   & :last-child {
     opacity: 0.8;
   }
-}
-md-toolbar:not(.md-hue-1),
+}*/
+/*md-toolbar:not(.md-hue-1),
 .md-fab {
   fill: #fff;
-}
+}*/
 md-sidenav {
   fill: #737373;
   ng-md-icon {
@@ -49,7 +49,7 @@ md-sidenav {
     top: 5px; // adjust for svg viewbox
   }
 }
-.user-avatar {
+/*.user-avatar {
   border-radius: 99%;
 }
 
@@ -60,8 +60,8 @@ md-sidenav {
   margin: 16px;
   position: absolute;
   width: 36px;
-} 
-md-toolbar.md-default-theme  {
+} */
+/*md-toolbar.md-default-theme  {
   background-color: #eee;
   color:#777;
 }
@@ -75,8 +75,8 @@ md-list .md-button {
   font-weight: 500;
   text-align: left;
   width: 100%;
-}
-.visually-hidden {
+}*/
+/*.visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
   height: 1px;
@@ -85,6 +85,6 @@ md-list .md-button {
   padding: 0; 
   position: absolute;
   width: 1px;
-}
+}*/
 
 

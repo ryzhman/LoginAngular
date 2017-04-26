@@ -21,7 +21,6 @@ export default class TransactionListController {
 
     getAllTransactions() {
         // this._checkUser()
-        console.log("getAllTransactions", this.transactionService.getAllTransactions());
         return this.transactionService.getAllTransactions();
         //TODO change to call BE 
     }

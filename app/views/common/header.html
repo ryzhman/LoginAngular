@@ -1,17 +1,18 @@
-<md-content class="md-padding">
-    <md-nav-bar md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-        <md-nav-item md-nav-sref='home' layout="row">myFinance</md-nav-item>
-        <md-nav-item md-nav-sref='login' ng-if="!ctrl.loggedInUser" layout="row" layout-align="end none">
+<md-content flex="33"  class="md-padding" layout-xs="row">
+    <md-nav-bar flex="33"  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
+        <md-nav-item flex="33"  md-nav-sref='home' layout-xs="column">myFinance</md-nav-item>
+        <md-nav-item flex="33"  md-nav-sref='login' ng-if="!ctrl.loggedInUser" layout="row" layout-align="end none">
             Login
         </md-nav-item>
-        <md-nav-item md-nav-sref='signUp' ng-if="!ctrl.loggedInUser" layout="row" layout-align="end none">
+        <md-nav-item flex="33"  md-nav-sref='signUp' ng-if="!ctrl.loggedInUser" layout-xs="row" layout-align="end none">
             Sign up
         </md-nav-item>
-        <md-nav-item md-nav-sref='user.newTransaction' ng-if="ctrl.loggedInUser" layout="row" layout-align="end none">
+        <md-nav-item md-nav-sref='user.newTransaction' ng-if="ctrl.loggedInUser" layout-xs="row" layout-align="end none">
             New transaction
         </md-nav-item>
         <md-menu ng-if="ctrl.loggedInUser" layout="row" layout-align="end none">
             <md-button class="md-icon-button" aria-label="Open sample menu" ng-mouseenter="$mdMenu.open()">
+                Menu
                 <md-icon md-svg-src="./menu.png" aria-label="menu"></md-icon>
             </md-button>
             <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
