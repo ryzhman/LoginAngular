@@ -8,20 +8,21 @@
                 <th>Description</th>
                 <th>Total sum</th>
             </thead>
-            <tr ng-repeat="transaction in ctrl.getAllTransactions() track by $index">
-                <td>{{$index+1}}</td>
-                <td>{{transaction.date | date:'dd/MM/yyyy'}}</td>
-                <td>{{transaction.category}}</td>
-                <td>{{transaction.description}}</td>
-                <td>{{transaction.sum}}</td>
-            </tr>
+            <tbody>
+                <tr ng-repeat="transaction in ctrl.transactions track by $index">
+                {{transaction | json}}
+                    <td>{{$index+1}}</td>
+                    <td>{{transaction.date | date:'dd/MM/yyyy'}}</td>
+                    <td>{{transaction.category}}</td>
+                    <td>{{transaction.description}}</td>
+                    <td>{{transaction.sum}}</td>
+                </tr>
+            </tbody>
         </table>
     </div>
-
     <div class="row">
         <div class="col-xs-12">
             <a href class="btn btn-success" ui-sref="user.newTransaction">Add new transaction</a>
         </div>
     </div>
-
 </div>

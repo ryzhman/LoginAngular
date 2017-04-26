@@ -12,7 +12,6 @@ export default class HeaderController {
         this.allStates = $state.get();
 
         this.loggedInUser = userService.getLoggedInUser();
-        console.log(this.loggedInUser);
 
         this.loginRegisterStates = this.allStates.filter((state) => {
             if (userService.getLoggedInUser() === null) {

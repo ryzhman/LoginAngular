@@ -3,6 +3,7 @@
  */
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
+import newTransactionController from "./controller/newTransactionController";
 import categoryController from "./controller/categoryController";
 
 import userMainTmpl from "./views/user.html";
@@ -66,7 +67,7 @@ export default ($stateProvider) => {
             title: 'New transaction',
             loginRequired: true,
             template: newTransactionTmpl,
-            controller: transactionListController, //each state - controller
+            controller: newTransactionController, 
             controllerAs: 'ctrl'
         })
         .state('user.allCategories', {

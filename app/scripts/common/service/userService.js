@@ -36,14 +36,13 @@ export default class UserService {
     userLogin(email, pass) {
         let user = this.getUser(email);
         if (user && user.password === pass) {
-            // this.loggedInUser = user.email;
-            this._storeCurrentUser(this.loggedInUser);
+            this.loggedInUser = user.email;
+            this._storeCurrentUser(user.email);
             return user;
         }
     }
 
     userLogout(){
-        console.log(this.getLoggedInUser());
         this.$window.localStorage.removeItem('currentUser');
         this.loggedInUser = null;
     }

@@ -26,12 +26,14 @@ export default class TransactionService {
     }
 
     _addTransaction(user, transaction) {
-        this.localStorage.setItem("transaction_" + user, angular.toJson(transaction));
+        let currentArr = this.getAllTransactions();
+        currentArr.push(transaction);
+        this.localStorage.setItem("transaction_" + user, angular.toJson(currentArr));
     }
 
     getAllTransactions() {
         //TODO change to call BE 
-        let currentUser = this.userService.loggedInUser;
+        let currentUser = this.userService.getLoggedInUser();
         let transactionsArr = [];
         let transactionKey = "transaction_" + currentUser;
         if (this.localStorage.getItem(transactionKey)) {
@@ -39,6 +41,6 @@ export default class TransactionService {
         } else {
             transactionsArr = [];
         }
-        return this.transactionsArr;
+        return transactionsArr;
     }
 }
