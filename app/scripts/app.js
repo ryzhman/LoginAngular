@@ -32,7 +32,7 @@ angular.module('app', [
             $rootScope.pageTitle = toState.title;
         });
 
-        /* $rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
+         /*$rootScope.$on('$stateChangeStart', function(event, toState, toParams, fromState, fromParams) {
              console.log('$stateChangeStart to ' + toState.to + '- fired when the transition begins. toState,toParams : \n', toState, toParams);
          });
 

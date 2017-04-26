@@ -11,6 +11,7 @@ export default class TransactionService {
         this.userService = userService;
         this.localStorage = $window.localStorage;
         this.categoryService = categoryService;
+        this.isIncome = null;
     }
 
     _storeTransaction(user, transaction) {

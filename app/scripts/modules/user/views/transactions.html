@@ -1,6 +1,10 @@
-<md-content layout-padding>
-    <div class="row">
-        <table class="table">
+<md-content layout-padding layout-align="center center">
+    <div>
+        <div layout="row" layout-align="center center">
+            <md-button layout class="md-raised md-primary" ng-click="ctrl.redirectToNewTransaction(false)">Add new expense</md-button>
+            <md-button layout class="md-raised md-primary" ng-click="ctrl.redirectToNewTransaction(true)">Add new income</md-button>
+        </div>
+        <table class="table" layout-align="center center">
             <thead>
                 <th>#</th>
                 <th>Date</th>
@@ -18,7 +22,7 @@
                          </span>
                     </td>
                     <td>
-                        <span editable-text="transaction.category" e-name="category" e-form="rowform" > <!-- e-ng-options="cat.value as cat.title for cat in ctrl.loadCategories()" -->
+                        <span editable-text="transaction.category" e-name="category" e-form="rowform"> <!-- e-ng-options="cat.value as cat.title for cat in ctrl.loadCategories()" -->
                             {{ctrl.showCategory(transaction)}}
                          </span>
                     </td>
@@ -42,15 +46,21 @@
                                 cancel
                             </md-button>
                         </form>
-                        <div class="buttons" ng-show="!rowform.$visible">
-                            <md-button class="md-primary" type="button" class="btn btn-primary" ng-click="rowform.$show()">
+                        <div ng-show="!rowform.$visible">
+                            <md-button class="md-primary md-raised" ng-click="rowform.$show()">
                                 <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">edit</i>
                                     <md-icon>
                             </md-button>
-                            <md-button class="md-primary" type="button" class="btn btn-danger" ng-click="ctrl.deleteTransaction(transaction)">
-                                <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">delete</i>
+                            <md-button class="md-primary md-raised" ng-click="ctrl.showConfirm($event);rowform.$show()">
+                                <md-icon><i class="material-icons">delete</i>
+                                    <!-- ng-click="ctrl.deleteTransaction(transaction)" -->
                                 </md-icon>
                             </md-button>
+                            <!-- <md-button class="md-primary md-raised" class="btn btn-danger" ng-click="rowform.$show()">
+                                <md-icon ng-click="ctrl.deleteTransaction(transaction)"><i class="material-icons">delete</i>
+                                ng-click="ctrl.edit(transaction)"
+                                </md-icon>
+                            </md-button> -->
                         </div>
                     </td>
                 </tr>
@@ -63,33 +73,4 @@
             </tfoot>
         </table>
     </div>
-    <div class="row">
-        <md-button class="md-primary" ui-sref="user.newTransaction">Add new transaction</md-button>
-    </div>
-    </div>
 </md-content>
-<!-- 
-            <thead md-head>
-                <th md-column>#</th>
-                <th md-column>Date</th>
-                <th md-column>Category</th>
-                <th md-column>Description</th>
-                <th md-column>Total sum</th>
-            </thead>
-            <tbody md-body>
-                <tr md-row md-select="transaction" md-select-id="name" md-auto-select ng-repeat="transaction in ctrl.transactions track by $index">
-                    <td md-cell>{{$index+1}}</td>
-                    <td md-cell>{{transaction.date | date:'dd/MM/yyyy'}}</td>
-                    <td md-cell>{{transaction.category}}</td>
-                    <td md-cell>{{transaction.description}}</td>
-                    <td md-cell>{{transaction.sum}}</td>
-                </tr>
-            </tbody>
-            <tfoot md-foot>
-                <tr md-row>
-                    <th md-column colspan="4"><strong>Total expenses</strong></th>
-                    <th md-column>{{ctrl.getTotalExpenses()}}</th>
-                </tr>
-            </tfoot>
-        </table>
- -->

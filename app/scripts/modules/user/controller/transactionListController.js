@@ -4,7 +4,7 @@
 
 "use strict";
 export default class TransactionListController {
-    constructor($state, $filter, userService, user, transactionService, categoryService) {
+    constructor($state, $filter, $rootScope, userService, user, transactionService, categoryService, $mdDialog) {
         "ngInject";
 
         this.$state = $state;
@@ -15,6 +15,8 @@ export default class TransactionListController {
         this.transactions = this.getAllTransactions();
         this.$filter = $filter;
         this.updated = {};
+        this.$mdDialog = $mdDialog;
+        this.$rootScope = $rootScope;
     }
 
     getAllTransactions() {
@@ -22,11 +24,31 @@ export default class TransactionListController {
         //TODO change to call BE 
     }
 
+    redirectToNewTransaction(isIncome){
+        this.transactionService.isIncome = isIncome;
+        this.$state.go("user.newTransaction");
+    }
+
     editTransaction(dataForUpdate, transaction) {
         this.updated = transaction;
         this.transactionService.updateTransaction(transaction, dataForUpdate);
         this.transactions = this.getAllTransactions();
     }
+
+    showConfirm(ev) {
+        let confirm = this.$mdDialog.confirm()
+            .title('Would you like to delete this transaction?')
+            .textContent('Information cannot be restored after this step')
+            .targetEvent(ev)
+            .ok('Delete')
+            .cancel('Cancel');
+
+        this.$mdDialog.show(confirm).then(function() {
+            this.deleteTransaction(transaction);
+        }, function() {
+            this.backToTransactionsList();
+        });
+    };
 
     deleteTransaction(transaction) {
         this.transactionService.deleteTransaction(transaction);

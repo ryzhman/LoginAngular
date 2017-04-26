@@ -4,12 +4,14 @@
 import HeaderController from "../../common/controller/HeaderController";
 import transactionListController from "./controller/transactionListController";
 import newTransactionController from "./controller/newTransactionController";
+// import newIncomeController from "./controller/newIncomeController";
 import categoryController from "./controller/categoryController";
 
 import userMainTmpl from "./views/user.html";
 import transactionsTmpl from "./views/transactions.html";
 import categoriesTmpl from "./views/categories.html";
 import newTransactionTmpl from "./views/newTransaction.html";
+// import newIncomeTmpl from "./views/newIncome.html";
 import newCategoryTmpl from "./views/newCategory.html";
 import headerTmpl from "../../../views/common/header.html";
 
@@ -67,9 +69,17 @@ export default ($stateProvider) => {
             title: 'New transaction',
             loginRequired: true,
             template: newTransactionTmpl,
-            controller: newTransactionController, 
+            controller: newTransactionController,
             controllerAs: 'ctrl'
         })
+        // .state('user.newIncome', {
+        //     url: '/income',
+        //     title: 'New income',
+        //     loginRequired: true,
+        //     template: newIncomeTmpl,
+        //     controller: newIncomeController,
+        //     controllerAs: 'ctrl'
+        // })
         .state('user.allCategories', {
             url: '/categories',
             title: 'Categories',
