@@ -1,47 +1,45 @@
-<md-content flex="33"  class="md-padding" layout-xs="row">
-    <md-nav-bar flex="33"  md-selected-nav-item="currentNavItem" nav-bar-aria-label="navigation links">
-        <md-nav-item flex="33"  md-nav-sref='home' layout-xs="column">myFinance</md-nav-item>
-        <md-nav-item flex="33"  md-nav-sref='login' ng-if="!ctrl.loggedInUser" layout="row" layout-align="end none">
-            Login
-        </md-nav-item>
-        <md-nav-item flex="33"  md-nav-sref='signUp' ng-if="!ctrl.loggedInUser" layout-xs="row" layout-align="end none">
-            Sign up
-        </md-nav-item>
-        <md-nav-item md-nav-sref='user.newTransaction' ng-if="ctrl.loggedInUser" layout-xs="row" layout-align="end none">
-            New transaction
-        </md-nav-item>
-        <md-menu ng-if="ctrl.loggedInUser" layout="row" layout-align="end none">
-            <md-button class="md-icon-button md-primary" aria-label="Menu" ng-mouseenter="$mdMenu.open()">
+<md-toolbar class="md-menu-toolbar">
+    <div layout="row">
+        <h1 layout="row" flex="75">myFinance</h1>
+        <md-button flex ng-if="!ctrl.loggedInUser" layout="row" layout-align="end center"><a ui-sref="login">Login</a></md-button>
+        <md-button flex ng-if="!ctrl.loggedInUser" layout="row" layout-align="end center"><a ui-sref="signUp">Sign up</a></md-button>
+        <md-button ng-if="ctrl.loggedInUser" flex="14" layout-align="end center"><a ui-sref="user.newTransaction" flex layout="row">New transaction</a></md-button>
+        <md-menu ng-if="ctrl.loggedInUser" width="10" flex="1" layout="row" layout-align="end center" layout="column">
+            <md-button class="md-icon-button md-primary" aria-label="Menu" ng-mouseenter="$mdMenu.open()" layout="column">
                 <md-icon> <i class="material-icons">menu</i></md-icon>
             </md-button>
-            <md-menu-content width="4" ng-mouseleave="$mdMenu.close()">
-                <md-menu-item>
-                    <md-button>
+            <md-menu-content flex ng-mouseleave="$mdMenu.close()" layout="column">
+                <md-menu-item flex="10" class="menu">
+                    <md-button flex>
+                        <i class="material-icons">account_circle</i>
                         <a ui-sref="user.profile">Profile</a>
                     </md-button>
                 </md-menu-item>
-                <md-menu-item>
-                    <md-button>
+                <md-menu-item flex="10" layout="column">
+                    <md-button flex>
+                        <i class="material-icons">account_balance</i>
                         <a ui-sref="user.allTransactions">Transactions</a>
                     </md-button>
                 </md-menu-item>
-                <md-menu-item>
-                    <md-button>
+                <md-menu-item flex="10" layout="column">
+                    <md-button flex>
+                        <i class="material-icons">style</i>
                         <a ui-sref="user.allCategories">Categories</a>
                     </md-button>
                 </md-menu-item>
-                </md-menu-item>
-                <md-menu-item>
-                    <md-button>
+                <md-menu-item flex="10" layout="column">
+                    <md-button flex>
+                        <i class="material-icons">dvr</i>
                         <a ui-sref="user.reports">Report</a>
                     </md-button>
                 </md-menu-item>
-                <md-menu-item>
-                    <md-button>
+                <md-menu-item flex="10" layout="column">
+                    <md-button flex>
+                        <i class="material-icons">exit_to_app</i>
                         <p ng-click="ctrl.logout()">Logout</p>
                     </md-button>
                 </md-menu-item>
             </md-menu-content>
         </md-menu>
-    </md-nav-bar>
-</md-content>
+    </div>
+</md-toolbar>

@@ -1,4 +1,4 @@
-<md-content layout-padding layout-align="center center">
+<md-content layout-padding layout-align="center center" class="header">
     <div>
         <div layout="row" layout-align="center center">
             <md-button layout class="md-raised md-primary" ng-click="ctrl.redirectToNewTransaction(false)">Add new expense</md-button>
@@ -17,32 +17,32 @@
                 <tr ng-repeat="transaction in ctrl.transactions track by $index">
                     <td align="center">{{$index+1}}</td>
                     <td align="center">
-                        <span editable-date="transaction.date" e-name="date" e-form="rowform">
+                        <span editable-date="transaction.date" data-inputclass="date" e-name="date" e-form="rowform">
                             {{ transaction.date | date:'dd.MM.yyyy'}}
                          </span>
                     </td>
                     <td align="center">
-                        <span editable-select="transaction.category" e-name="category" e-form="rowform" e-ng-options="cat.value as cat.title for cat in ctrl.categories">
+                        <span editable-select="transaction.category" data-inputclass="cat" e-name="category" e-form="rowform" e-ng-options="cat.value as cat.title for cat in ctrl.categories">
                             {{ctrl.showCategory(transaction)}}
                          </span>
                     </td>
                     <td align="center">
-                        <span editable-textarea="transaction.description" e-name="description" e-form="rowform" e-rows="3" e-cols="40">
+                        <span editable-textarea="transaction.description" data-inputclass="description" e-name="description" e-form="rowform" e-rows="2" e-cols="40">
                             {{ transaction.description || 'n/a' }}
                          </span>
                     </td>
                     <td align="center">
-                        <span editable-number="transaction.sum" e-name="sum" e-form="rowform">
+                        <span editable-number="transaction.sum" data-inputclass="sum" e-name="sum" e-form="rowform">
                             {{ transaction.sum }}
                          </span>
                     </td>
                     <td align="center">
                         <form editable-form name="rowform" onbeforesave="ctrl.editTransaction($data, transaction)" ng-show="rowform.$visible" shown="ctrl.updated == transaction">
-                            <md-button type="submit" ng-disabled="rowform.$waiting">
-                                save
+                            <md-button class="md-primary md-raised" type="submit" layout="column" ng-disabled="rowform.$waiting">
+                                Save
                             </md-button>
-                            <md-button type="button" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()">
-                                cancel
+                            <md-button class="md-primary md-raised" type="button" layout="column" ng-disabled="rowform.$waiting" ng-click="rowform.$cancel()">
+                                Cancel
                             </md-button>
                         </form>
                         <div ng-show="!rowform.$visible">
@@ -54,18 +54,13 @@
                                 <md-icon><i class="material-icons">delete</i>
                                 </md-icon>
                             </md-button>
-                            <!-- <md-button class="md-primary md-raised" class="btn btn-danger" ng-click="rowform.$show()">
-                                <md-icon ng-click="ctrl.deleteTransaction(transaction)"><i class="material-icons">delete</i>
-                                ng-click="ctrl.edit(transaction)"
-                                </md-icon>
-                            </md-button> -->
                         </div>
                     </td>
                 </tr>
             </tbody>
         </table>
-        <div class="balance">
-            Current balance: {{ctrl.getBalance()}}
-        </div>
+        <h5 class="balance">
+            <i>Current balance: {{ctrl.getBalance()}}</i>
+        </h5>
     </div>
 </md-content>
