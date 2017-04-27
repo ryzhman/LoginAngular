@@ -71,6 +71,9 @@ export default class TransactionService {
         let transactionKey = "transaction_" + currentUser;
         if (this.localStorage.getItem(transactionKey)) {
             transactionsArr = angular.fromJson(this.localStorage.getItem(transactionKey));
+            transactionsArr.forEach(transaction => {
+                transaction.date = new Date(transaction.date);
+            });
         } else {
             transactionsArr = [];
         }
@@ -81,7 +84,7 @@ export default class TransactionService {
         this._replaceTransaction(transaction, dataForUpdate);
     }
 
-    deleteTransaction(transaction){
+    deleteTransaction(transaction) {
         this._deleteTransaction(transaction);
     }
 }

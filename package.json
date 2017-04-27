@@ -23,6 +23,7 @@
     "jquery": "^3.2.1",
     "jshint": "^2.9.4",
     "jshint-loader": "^0.8.4",
+    "rx": "^4.1.0",
     "webpack": "^1.14.0"
   },
   "devDependencies": {

@@ -6,38 +6,37 @@
         </div>
         <table class="table" layout-align="center center">
             <thead>
-                <th>#</th>
-                <th>Date</th>
-                <th>Category</th>
-                <th>Description</th>
-                <th>Total sum</th>
-                <th>Edit</th>
+                <th class="id">#</th>
+                <th class="date">Date</th>
+                <th class="cat">Category</th>
+                <th class="description">Description</th>
+                <th class="sum">Total sum</th>
+                <th class="edit">Edit</th>
             </thead>
             <tbody>
                 <tr ng-repeat="transaction in ctrl.transactions track by $index">
-                    <td>{{$index+1}}</td>
-                    <td>
-                        <span editable-text="transaction.date" e-name="date" e-form="rowform">
-                            {{ (transaction.date | date:'dd.MM.yyyy') || 'n/a' }}
+                    <td align="center">{{$index+1}}</td>
+                    <td align="center">
+                        <span editable-date="transaction.date" e-name="date" e-form="rowform">
+                            {{ transaction.date | date:'dd.MM.yyyy'}}
                          </span>
                     </td>
-                    <td>
-                        <span editable-text="transaction.category" e-name="category" e-form="rowform"> <!-- e-ng-options="cat.value as cat.title for cat in ctrl.loadCategories()" -->
+                    <td align="center">
+                        <span editable-select="transaction.category" e-name="category" e-form="rowform" e-ng-options="cat.value as cat.title for cat in ctrl.categories">
                             {{ctrl.showCategory(transaction)}}
                          </span>
                     </td>
-                    <td>
-                        <span editable-text="transaction.description" e-name="description" e-form="rowform">
+                    <td align="center">
+                        <span editable-textarea="transaction.description" e-name="description" e-form="rowform" e-rows="3" e-cols="40">
                             {{ transaction.description || 'n/a' }}
                          </span>
                     </td>
-                    <td>
-                        <span editable-text="transaction.sum" e-name="sum" e-form="rowform">
+                    <td align="center">
+                        <span editable-number="transaction.sum" e-name="sum" e-form="rowform">
                             {{ transaction.sum }}
                          </span>
                     </td>
-                    <td>
-                        <!-- form -->
+                    <td align="center">
                         <form editable-form name="rowform" onbeforesave="ctrl.editTransaction($data, transaction)" ng-show="rowform.$visible" shown="ctrl.updated == transaction">
                             <md-button type="submit" ng-disabled="rowform.$waiting">
                                 save
@@ -47,13 +46,12 @@
                             </md-button>
                         </form>
                         <div ng-show="!rowform.$visible">
-                            <md-button class="md-primary md-raised" ng-click="rowform.$show()">
+                            <md-button class="md-primary md-raised" layout="column" ng-click="rowform.$show()">
                                 <md-icon ng-click="ctrl.edit(transaction)"><i class="material-icons">edit</i>
-                                    <md-icon>
+                                </md-icon>
                             </md-button>
-                            <md-button class="md-primary md-raised" ng-click="ctrl.showConfirm($event);rowform.$show()">
+                            <md-button class="md-primary md-raised" layout="column" ng-click="ctrl.showConfirm($event);rowform.$show();ctrl.storeCurrent(transaction)">
                                 <md-icon><i class="material-icons">delete</i>
-                                    <!-- ng-click="ctrl.deleteTransaction(transaction)" -->
                                 </md-icon>
                             </md-button>
                             <!-- <md-button class="md-primary md-raised" class="btn btn-danger" ng-click="rowform.$show()">
@@ -65,12 +63,9 @@
                     </td>
                 </tr>
             </tbody>
-            <tfoot>
-                <tr>
-                    <th colspan="4">Total expenses</th>
-                    <th>{{ctrl.getTotalExpenses()}}</th>
-                </tr>
-            </tfoot>
         </table>
+        <div class="balance">
+            Current balance: {{ctrl.getBalance()}}
+        </div>
     </div>
 </md-content>

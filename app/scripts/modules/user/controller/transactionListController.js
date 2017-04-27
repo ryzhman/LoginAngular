@@ -4,8 +4,9 @@
 
 "use strict";
 export default class TransactionListController {
-    constructor($state, $filter, $rootScope, userService, user, transactionService, categoryService, $mdDialog) {
+    constructor($scope, $state, $filter, $rootScope, userService, user, transactionService, categoryService, $mdDialog) {
         "ngInject";
+
 
         this.$state = $state;
         this.userService = userService;
@@ -17,6 +18,9 @@ export default class TransactionListController {
         this.updated = {};
         this.$mdDialog = $mdDialog;
         this.$rootScope = $rootScope;
+        this.$scope = $scope;
+        this.currentTransaction = {};
+        this.categories = this.loadCategories();
     }
 
     getAllTransactions() {
@@ -24,7 +28,7 @@ export default class TransactionListController {
         //TODO change to call BE 
     }
 
-    redirectToNewTransaction(isIncome){
+    redirectToNewTransaction(isIncome) {
         this.transactionService.isIncome = isIncome;
         this.$state.go("user.newTransaction");
     }
@@ -36,6 +40,7 @@ export default class TransactionListController {
     }
 
     showConfirm(ev) {
+        let contr = this;
         let confirm = this.$mdDialog.confirm()
             .title('Would you like to delete this transaction?')
             .textContent('Information cannot be restored after this step')
@@ -43,14 +48,19 @@ export default class TransactionListController {
             .ok('Delete')
             .cancel('Cancel');
 
-        this.$mdDialog.show(confirm).then(function() {
-            this.deleteTransaction(transaction);
-        }, function() {
-            this.backToTransactionsList();
+        this.$mdDialog.show(confirm).then(() => {
+            contr.deleteTransaction(contr.currentTransaction);
+        }, () => {
+            contr.backToTransactionsList();
         });
     };
 
+    storeCurrent(transaction) {
+        this.currentTransaction = transaction;
+    }
+
     deleteTransaction(transaction) {
+        console.log(transaction);
         this.transactionService.deleteTransaction(transaction);
         this.transactions = this.getAllTransactions();
     }
@@ -58,12 +68,12 @@ export default class TransactionListController {
     showCategory(transaction) {
         let selected = [];
         if (transaction.category) {
-            selected = this.$filter('filter')(this.categoryService.getCategories(), { title: transaction.category });
+            selected = this.$filter('filter')(this.categoryService.getCategories(), { value: transaction.category });
         }
         return selected.length ? selected[0].title : 'n/a';
     }
 
-    getTotalExpenses() {
+    getBalance() {
         let allTransacion = this.getAllTransactions();
         let totalExpenses = 0;
         allTransacion.forEach(transaction => {

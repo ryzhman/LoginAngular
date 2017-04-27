@@ -3,7 +3,10 @@ body {
     padding-right: 50px;
     padding-bottom: 30px;
     padding-left: 60px;
+    position: relative;
+    width: 75%;
 }
+
 
 /*p {
     line-height: 2rem;
@@ -18,37 +21,81 @@ $gray: #eee;
 md-content.md-default-theme {
   background-color: $gray;
 }*/
+
 md-card {
-  background-color: #fff;
-  h2:first-of-type {
-    margin-top: 0;
-  }
+    background-color: #fff;
+    h2:first-of-type {
+        margin-top: 0;
+    }
 }
+
 md-toolbar {
-  .md-button.md-default-theme {
-    border-radius: 99%; 
-  }
+    .md-button.md-default-theme {
+        border-radius: 99%;
+    }
 }
+
 h2 {
-  font-weight: 400;
+    font-weight: 400;
 }
+
+
 /*.md-toolbar-tools-bottom {
   font-size: small;
   & :last-child {
     opacity: 0.8;
   }
 }*/
+
+
 /*md-toolbar:not(.md-hue-1),
 .md-fab {
   fill: #fff;
 }*/
+
 md-sidenav {
-  fill: #737373;
-  ng-md-icon {
-    position: relative;
-    top: 5px; // adjust for svg viewbox
-  }
+    fill: #737373;
+    ng-md-icon {
+        position: relative;
+        top: 5px; // adjust for svg viewbox
+    }
 }
+
+.balance {
+    text-align: right;
+    right: 50px;
+    padding: 10px;
+}
+
+tr {
+    font-weight: bold;
+}
+
+/*td {
+  align: center;
+}*/
+
+.id {
+    width: 10%
+}
+
+.date {
+    width: 15%
+}
+
+.cat {
+    width: 15%
+}
+
+.description {
+    width: 40%
+}
+
+.edit {
+    width: 20%
+}
+
+
 /*.user-avatar {
   border-radius: 99%;
 }
@@ -61,6 +108,8 @@ md-sidenav {
   position: absolute;
   width: 36px;
 } */
+
+
 /*md-toolbar.md-default-theme  {
   background-color: #eee;
   color:#777;
@@ -76,6 +125,8 @@ md-list .md-button {
   text-align: left;
   width: 100%;
 }*/
+
+
 /*.visually-hidden {
   border: 0;
   clip: rect(0 0 0 0);
@@ -88,49 +139,47 @@ md-list .md-button {
 }*/
 
 table {
-  font-family: "Helvetica Neue", Helvetica, sans-serif
+    font-family: "Helvetica Neue", Helvetica, sans-serif
 }
 
 caption {
-  text-align: left;
-  color: silver;
-  font-weight: bold;
-  text-transform: uppercase;
-  padding: 5px;
+    text-align: left;
+    color: silver;
+    font-weight: bold;
+    text-transform: uppercase;
+    padding: 5px;
 }
 
 thead {
-  background: SteelBlue;
-  color: white;
+    background: SteelBlue;
+    color: white;
 }
 
 th,
 td {
-  padding: 5px 10px;
+    padding: 5px 10px;
 }
 
 tbody tr:nth-child(even) {
-  background: WhiteSmoke;
+    background: WhiteSmoke;
 }
 
 tbody tr td:nth-child(2) {
-  text-align:center;
+    text-align: center;
 }
 
 tbody tr td:nth-child(3),
 tbody tr td:nth-child(4) {
-  text-align: right;
-  font-family: monospace;
+    text-align: right;
+    font-family: monospace;
 }
 
 tfoot {
-  background: SeaGreen;
-  color: white;
-  text-align: right;
+    background: SeaGreen;
+    color: white;
+    text-align: right;
 }
 
 tfoot tr th:last-child {
-  font-family: monospace;
+    font-family: monospace;
 }
-
-
