@@ -38,5 +38,9 @@ export default class HeaderController {
         this.$state.go('home');
     }
 
+    redirectToHome(){
+        this.$state.go('home');
+    }
+
 
 }

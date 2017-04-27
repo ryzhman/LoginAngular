@@ -1,6 +1,6 @@
 <md-toolbar class="md-menu-toolbar">
     <div layout="row">
-        <h1 layout="row" flex="75">myFinance</h1>
+        <h1 layout="row" flex="75" ng-click="ctrl.redirectToHome()">myFinance</h1>
         <md-button flex ng-if="!ctrl.loggedInUser" layout="row" layout-align="end center"><a ui-sref="login">Login</a></md-button>
         <md-button flex ng-if="!ctrl.loggedInUser" layout="row" layout-align="end center"><a ui-sref="signUp">Sign up</a></md-button>
         <md-button ng-if="ctrl.loggedInUser" flex="14" layout-align="end center"><a ui-sref="user.newTransaction" flex layout="row">New transaction</a></md-button>

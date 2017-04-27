@@ -7,6 +7,7 @@ import transactionService from "./service/transactionService";
 import categoryService from "./service/categoryService";
 
 let userModule = angular.module('app.userModule', []);
+
 userModule
 .config(commonRouter)
 .service('transactionService', transactionService)

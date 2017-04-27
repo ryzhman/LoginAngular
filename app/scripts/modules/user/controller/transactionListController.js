@@ -13,13 +13,13 @@ export default class TransactionListController {
         this.transactionService = transactionService;
         this.categoryService = categoryService;
 
-        this.transactions = this.getAllTransactions();
         this.$filter = $filter;
         this.updated = {};
         this.$mdDialog = $mdDialog;
         this.$rootScope = $rootScope;
         this.$scope = $scope;
         this.currentTransaction = {};
+        this.transactions = this.getAllTransactions();
         this.categories = this.loadCategories();
     }
 
@@ -60,7 +60,6 @@ export default class TransactionListController {
     }
 
     deleteTransaction(transaction) {
-        console.log(transaction);
         this.transactionService.deleteTransaction(transaction);
         this.transactions = this.getAllTransactions();
     }
@@ -91,6 +90,6 @@ export default class TransactionListController {
     }
 
     loadCategories() {
-        return this.categoryService.getCategories();
+        return this.categoryService.getAllCategories();
     }
 }

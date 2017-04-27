@@ -1,42 +1,48 @@
-<md-content layout-padding layout-align="center center">
-    <h4>To create a new transaction add an appropriate info here</h4>
-    <form ng-submit="ctrl.addNewTransaction()" autocomplete="off">
-        <md-input-container class="md-block" layout-align="center center">
-            <label for="sum">Transaction date</label>
-            <md-datepicker ng-model="ctrl.date" md-placeholder="Enter date"></md-datepicker>
-        </md-input-container>
-        <md-input-container class="md-block" layout-align="center center">
-            <label for="sum"><b>Total sum</b></label>
-            <input id="sum" type="number" ng-model='ctrl.sum' ng-style="ctrl.sumStyle" placeholder="Enter sum" required>
-        </md-input-container>
-        <md-input-container class="md-block" layout-align="center center">
-            <label for="description">Description</label>
-            <input id="description" type="text" ng-model='ctrl.description' placeholder="Enter Description">
-        </md-input-container>
-        <md-input-container class="md-block" layout-md="row" layout-align="center center" autocomplete="off">
-            <label>Transaction category</label>
-            <md-select ng-model="ctrl.category" placeholder="Select category" required>
-                <md-optgroup label="Daily spendings">
-                    <md-option value="grocary">Grocary</md-option>
-                    <md-option value="restaurants">Restaurants</md-option>
-                    <md-option value="commuting">Commuting</md-option>
-                </md-optgroup>
-                <md-optgroup label="Monthly spendings">
-                    <md-option value="house">Payment for house maintanence</md-option>
-                    <md-option value="electricity">Electricity</md-option>
-                    <md-option value="gas">Gas</md-option>
-                    <md-option value="Heating">Heating</md-option>
-                </md-optgroup>
-                <md-optgroup label="Quarterly spendings">
-                    <md-option value="taxes">Taxes</md-option>
-                </md-optgroup>
-                <md-optgroup label="Yearly spendings">
-                    <md-option value="bdays">Birthdays presents</md-option>
-                </md-optgroup>
-            </md-select>
-        </md-input-container>
-        <md-button class="md-raised md-primary" type="submit" layout-align-xs="center center">Create</md-button>
-        <md-button class="md-raised md-primary" ng-click="ctrl.backToTransactionsList()" layout-align-xs="center center">Back</md-button>
-    </form>
-    </md-input-container>
+<md-content layout-padding layout-align="center center" flex layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak">
+    <md-cart flex="flex" flex-gt-sm="50" flex-gt-md="33">
+        <div>
+            <h4>To create a new transaction add an appropriate info here</h4>
+        </div>
+        <div>
+            <form ng-submit="ctrl.addNewTransaction()" autocomplete="off">
+                <md-input-container layout-align="center center">
+                    <label for="sum">Transaction date</label>
+                    <md-datepicker ng-model="ctrl.date" md-placeholder="Enter date"></md-datepicker>
+                </md-input-container>
+                <md-input-container class="md-block" layout-align="center center">
+                    <label for="sum"><b>Total sum</b></label>
+                    <input id="sum" type="number" ng-model='ctrl.sum' ng-style="ctrl.sumStyle" placeholder="Enter sum" required>
+                </md-input-container>
+                <md-input-container class="md-block" layout-align="center center">
+                    <label for="description">Description</label>
+                    <input id="description" type="text" ng-model='ctrl.description' placeholder="Enter Description">
+                </md-input-container>
+                <md-input-container class="md-block" layout-md="row" layout-align="center center" autocomplete="off">
+                    <label>Transaction category</label>
+                    <md-select ng-model="ctrl.category" placeholder="Select category" required>
+                        <md-optgroup label="Daily spendings">
+                            <md-option value="grocary">Grocary</md-option>
+                            <md-option value="restaurants">Restaurants</md-option>
+                            <md-option value="commuting">Commuting</md-option>
+                        </md-optgroup>
+                        <md-optgroup label="Monthly spendings">
+                            <md-option value="house">Payment for house maintanence</md-option>
+                            <md-option value="electricity">Electricity</md-option>
+                            <md-option value="gas">Gas</md-option>
+                            <md-option value="Heating">Heating</md-option>
+                        </md-optgroup>
+                        <md-optgroup label="Quarterly spendings">
+                            <md-option value="taxes">Taxes</md-option>
+                        </md-optgroup>
+                        <md-optgroup label="Yearly spendings">
+                            <md-option value="bdays">Birthdays presents</md-option>
+                        </md-optgroup>
+                    </md-select>
+                </md-input-container>
+                <md-button class="md-raised md-primary" type="submit" layout-align-xs="center center">Create</md-button>
+                <md-button class="md-raised md-primary" ng-click="ctrl.backToTransactionsList()" layout-align-xs="center center">Back</md-button>
+            </form>
+            </md-input-container>
+        </div>
+    </md-cart>
 </md-content>

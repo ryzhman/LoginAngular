@@ -1,24 +1,24 @@
-<div class="container-fluid container">
-    <h4>To create a new category add appropriate info here</h4>
-    <form ng-submit="ctrl.addNewCategory()" class="col s12" autocomplete="off">
-        <div class="row">
-            <label for="title" class="col-sm-2 control-label">Category title</label>
-            <div class="col-sm-4">
-                <input id="description" type="text" ng-model='ctrl.title' placeholder="Enter title" class="form-control">
-            </div>
+<md-content layout-padding layout-align="center center" flex layout="row" layout-align="space-around" layout-padding="layout-padding" ng-cloak="ng-cloak">
+    <md-cart flex="flex" flex-gt-sm="50" flex-gt-md="33">
+        <div>
+            <h4>To create a new transaction add an appropriate info here</h4>
         </div>
-        <div class="row" autocomplete="off">
-            <label for="category" class="col-sm-2 control-label">Parent category</label>
-            <div class="col-sm-4">
-                <select id="category" name="group" ng-model="ctrl.parentCategory" required>
-                    <option value="1">Daily spendings</option>
-                    <option value="2">Monthly spendings</option>
-                    <option value="3">Quarterly spendings</option>
-                    <option value="4">Yearly spendings</option>
-                </select>
-            </div>
+        <div>
+            <form ng-submit="ctrl.addNewCategory()" autocomplete="off">
+                <md-input-container layout-align="center center">
+                    <label for="sum">Category Title</label>
+                    <input id="sum" type="text" ng-model='ctrl.title' placeholder="Enter title" required>
+                </md-input-container>
+                <md-input-container class="md-block" layout-md="row" layout-align="center center" autocomplete="off">
+                    <label>Parent category</label>
+                    <md-select ng-model="ctrl.category" placeholder="Select category" ng-repeat="cat in ctrl.parentCats" required>
+                        <md-option value="cat">{{cat}}</md-option>
+                    </md-select>
+                </md-input-container>
+                <md-button class="md-raised md-primary" type="submit" layout-align-xs="center center">Create</md-button>
+                <md-button class="md-raised md-primary" ng-click="ctrl.backToategoryList()" layout-align-xs="center center">Back</md-button>
+            </form>
+            </md-input-container>
         </div>
-        <button class="btn btn-default col-sm-offset-3 col-sm-2" type="submit">Create new transaction</button>
-        <a href class="btn btn-primary" ng-click="ctrl.backToCategoryList()">Back</a>
-    </form>
-</div>
+    </md-cart>
+</md-content>

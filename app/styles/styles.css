@@ -21,6 +21,10 @@ body {
     /*position: fixed;*/
 }
 
+.addNewTransaction {
+  witdh: 75%;
+}
+
 
 /*p {
     line-height: 2rem;
@@ -75,12 +79,12 @@ md-sidenav {
     }
 }
 
-/*.balance {
+.balance {
     text-align: right;
     right: 50px;
     padding: 10px;
     font-size: 20px;
-}*/
+}
 
 tr {
     font-weight: bold;
@@ -185,8 +189,10 @@ md-list .md-button {
   width: 1px;
 }*/
 
-table {
-    font-family: "Arial", Helvetica, sans-serif
+.transactions {
+    font-family: "Arial", Helvetica, sans-serif;
+    width: 75%;
+    align-content: right;
 }
 
 caption {
